@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nová vlna</title>
+  <link rel="stylesheet" href="https://use.typekit.net/wjn4gzj.css" />
+  <style>
+    /* ─── TOKENS ───────────────────────────────────────────── */
+    :root {
+      --cream:   #F2EFEA;
+      --white:   #FAFAF8;
+      --sand:    #E8E2D4;
+      --sand2:   #CBC5A5;
+      --navy:    #1E2438;
+      --navy60:  rgba(30,36,56,0.6);
+      --navy30:  rgba(30,36,56,0.3);
+      --navy10:  rgba(30,36,56,0.08);
+      --accent:  #C94B1A;
+      --accent2: #E06030;
+      --roca: "roca", Georgia, serif;
+      --sans: -apple-system, "Helvetica Neue", Arial, sans-serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ─── RESET ────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--navy);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── NAVIGATION ───────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 68px;
+      padding: 0 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(242,239,234,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(242,239,234,0.97);
+      box-shadow: 0 1px 0 var(--navy10);
+    }
+    .nav-brand {
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      color: var(--navy);
+    }
+    .brand-tilde {
+      color: var(--accent);
+      margin: 0 0.03em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--navy60);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-cta {
+      font-size: 0.82rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.08em !important;
+      color: var(--accent) !important;
+      border-bottom: 1.5px solid var(--accent);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s !important;
+    }
+    .nav-cta:hover {
+      color: var(--accent2) !important;
+      border-color: var(--accent2) !important;
+    }
+    .hamburger { display: none; }
+
+    /* ─── HERO ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 5vw 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Wavy grid texture */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, black 20%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, black 20%, transparent 100%);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--navy30);
+      margin-bottom: 2.5rem;
+    }
+
+    /* THE BIG TITLE */
+    .hero-title-wrap {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+    #wave-title {
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: clamp(5rem, 16vw, 16rem);
+      line-height: 0.92;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+      cursor: default;
+      user-select: none;
+    }
+    #wave-title .word {
+      display: flex;
+    }
+    #wave-title .char {
+      display: inline-block;
+      transition: transform 0.05s linear;
+      will-change: transform;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 1.4vw, 1.15rem);
+      color: var(--navy60);
+      max-width: 52ch;
+      line-height: 1.75;
+      margin-bottom: 3rem;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn-dark {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 15px 36px;
+      background: var(--navy);
+      color: var(--cream);
+      border-radius: 999px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-dark:hover {
+      background: #2a3050;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 35px rgba(30,36,56,0.2);
+    }
+    .btn-outline {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 14px 36px;
+      border: 1.5px solid var(--navy30);
+      color: var(--navy);
+      border-radius: 999px;
+      transition: border-color 0.2s, transform 0.15s, background 0.2s;
+    }
+    .btn-outline:hover {
+      border-color: var(--navy);
+      background: var(--navy10);
+      transform: translateY(-2px);
+    }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.35;
+    }
+    .scroll-hint span {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--navy), transparent);
+      animation: scrollLine 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ─── QUOTE BAND ───────────────────────────────────────── */
+    .quote-band {
+      background: var(--navy);
+      padding: 7rem 10vw;
+      overflow: hidden;
+      position: relative;
+    }
+    .quote-band::before {
+      content: '"';
+      position: absolute;
+      top: -0.3em;
+      left: 6vw;
+      font-family: var(--roca);
+      font-size: 30rem;
+      color: rgba(242,239,234,0.03);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .quote-band blockquote {
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: clamp(1.7rem, 3.2vw, 3rem);
+      line-height: 1.2;
+      color: var(--cream);
+      max-width: 22ch;
+      position: relative;
+    }
+    .quote-band blockquote::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 2rem;
+    }
+    .quote-source {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(242,239,234,0.3);
+    }
+
+    /* ─── PROGRAM ──────────────────────────────────────────── */
+    .section-program {
+      background: var(--white);
+      padding: 9rem 10vw;
+    }
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 5rem;
+      flex-wrap: wrap;
+    }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.0;
+      color: var(--navy);
+    }
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--navy60);
+      max-width: 44ch;
+      line-height: 1.7;
+      align-self: flex-end;
+    }
+
+    /* Program grid — editorial list style */
+    .program-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--sand);
+    }
+    .program-item {
+      padding: 3rem 2.5rem;
+      border-bottom: 1px solid var(--sand);
+      border-right: 1px solid var(--sand);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s var(--ease);
+    }
+    .program-item:nth-child(even) { border-right: none; }
+    .program-item:nth-last-child(-n+2) { border-bottom: none; }
+    .program-item:hover { background: var(--cream); }
+    .program-item:hover .pi-num { opacity: 1; }
+    .pi-num {
+      font-family: var(--roca);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      opacity: 0.4;
+      margin-bottom: 1.2rem;
+      transition: opacity 0.3s;
+    }
+    .pi-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 1.2rem;
+    }
+    .pi-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: var(--navy);
+      stroke-width: 1.4;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .pi-title {
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+    .pi-text {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--navy60);
+    }
+
+    /* ─── VALUES STRIP ─────────────────────────────────────── */
+    .values-strip {
+      background: var(--cream);
+      padding: 5rem 10vw;
+      overflow: hidden;
+    }
+    .values-ticker {
+      display: flex;
+      gap: 0;
+      white-space: nowrap;
+      animation: ticker 28s linear infinite;
+    }
+    .values-ticker:hover { animation-play-state: paused; }
+    .vt-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0 2.5rem;
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      color: var(--navy30);
+      letter-spacing: 0.02em;
+      flex-shrink: 0;
+      transition: color 0.3s;
+    }
+    .vt-item:hover { color: var(--navy); }
+    .vt-dot {
+      width: 5px;
+      height: 5px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── PHILOSOPHY ───────────────────────────────────────── */
+    .section-philosophy {
+      background: var(--sand);
+      padding: 9rem 10vw;
+    }
+    .philosophy-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .phil-left {}
+    .phil-left p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--navy60);
+      margin-bottom: 1.4rem;
+    }
+    .phil-left p:first-of-type {
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+      line-height: 1.3;
+      color: var(--navy);
+    }
+    .phil-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--navy);
+      border-bottom: 1.5px solid var(--accent);
+      padding-bottom: 2px;
+      margin-top: 1rem;
+      transition: color 0.2s;
+    }
+    .phil-link:hover { color: var(--accent); }
+    .phil-link svg {
+      width: 14px; height: 14px;
+      stroke: currentColor; stroke-width: 2.2;
+      fill: none; stroke-linecap: round; stroke-linejoin: round;
+      transition: transform 0.2s;
+    }
+    .phil-link:hover svg { transform: translateX(4px); }
+    .phil-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .phil-value {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid rgba(30,36,56,0.12);
+      font-size: 0.95rem;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+    .phil-value:first-child { border-top: 1px solid rgba(30,36,56,0.12); }
+    .phil-value-num {
+      font-family: var(--roca);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      min-width: 28px;
+    }
+
+    /* ─── JOIN ─────────────────────────────────────────────── */
+    .section-join {
+      background: var(--navy);
+      padding: 10rem 10vw;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .section-join::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(201,75,26,0.12), transparent);
+      pointer-events: none;
+    }
+    .join-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(242,239,234,0.3);
+      margin-bottom: 2rem;
+    }
+    .join-title {
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 0.95;
+      color: var(--cream);
+      margin-bottom: 2rem;
+    }
+    .join-sub {
+      font-size: 1.05rem;
+      color: rgba(242,239,234,0.5);
+      max-width: 46ch;
+      line-height: 1.7;
+      margin: 0 auto 3rem;
+    }
+    .join-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-accent {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 999px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-accent:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 35px rgba(201,75,26,0.35);
+    }
+    .btn-ghost-light {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 15px 40px;
+      border: 1.5px solid rgba(242,239,234,0.2);
+      color: rgba(242,239,234,0.7);
+      border-radius: 999px;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-ghost-light:hover {
+      border-color: rgba(242,239,234,0.6);
+      color: var(--cream);
+      transform: translateY(-2px);
+    }
+
+    /* ─── PETITION ─────────────────────────────────────────── */
+    .section-petition {
+      background: var(--sand);
+      padding: 9rem 10vw;
+      border-top: 1px solid rgba(30,36,56,0.1);
+    }
+    .petition-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .petition-inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    .petition-text p:not(.section-label) {
+      font-size: 1rem;
+      color: var(--navy60);
+      line-height: 1.75;
+      margin-top: 1.5rem;
+    }
+    .petition-text .section-title { margin-top: 0.6rem; }
+    .petition-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+    .petition-counter {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+    .counter-num {
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: 3.5rem;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .counter-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy30);
+    }
+    .petition-btn {
+      font-size: 0.9rem !important;
+      padding: 17px 44px !important;
+    }
+    .petition-note {
+      font-size: 0.78rem;
+      color: var(--navy30);
+      line-height: 1.65;
+      max-width: 36ch;
+    }
+
+    /* ─── FOOTER ───────────────────────────────────────────── */
+    footer {
+      background: var(--cream);
+      padding: 3rem 10vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      border-top: 1px solid var(--sand);
+    }
+    .footer-brand {
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      color: var(--navy30);
+    }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      color: var(--navy30);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--navy); }
+    .footer-copy { font-size: 0.75rem; color: var(--navy30); }
+
+    /* ─── SCROLL REVEAL ────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+
+    /* ─── MOBILE ───────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .program-list { grid-template-columns: 1fr; }
+      .program-item { border-right: none !important; }
+      .program-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--sand); }
+      .program-item:last-child { border-bottom: none; }
+      .philosophy-inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 6vw; }
+      .nav-links { display: none; }
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 6px;
+      }
+      .hamburger span {
+        display: block;
+        width: 22px;
+        height: 1.5px;
+        background: var(--navy);
+        border-radius: 2px;
+      }
+      .section-program, .section-philosophy, .section-join { padding: 6rem 6vw; }
+      footer { padding: 2.5rem 6vw; flex-direction: column; gap: 1rem; }
+      .section-header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body data-page="home">
+  <script>if(sessionStorage.getItem('nv_auth')!=='1'){sessionStorage.setItem('nv_ref',location.href);location.replace('gate.html');}</script>
+
+  <!-- ─── NAV ─────────────────────────────────────────────── -->
+  <nav id="nav">
+    <a href="index.html" class="nav-brand">nová<span class="brand-tilde">~</span>vlna</a>
+    <ul class="nav-links">
+      <li><a href="#program">Program</a></li>
+      <li><a href="#o-nas">O nás</a></li>
+      <li><a href="manifest.html">Proč to děláme?</a></li>
+      <li><a href="podpis.html" class="nav-cta">Podepsat</a></li>
+    </ul>
+    <div class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─────────────────────────────────────────────── -->
+  <section class="hero">
+
+    <!-- Wavy grid background -->
+    <svg class="hero-grid" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="wavy-grid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+          <path d="M-5,40 Q10,37.5 20,40 Q30,42.5 40,40 Q50,37.5 60,40 Q70,42.5 85,40"
+                stroke="rgba(30,36,56,0.055)" stroke-width="0.7" fill="none"/>
+          <path d="M40,-5 Q37.5,10 40,20 Q42.5,30 40,40 Q37.5,50 40,60 Q42.5,70 40,85"
+                stroke="rgba(30,36,56,0.055)" stroke-width="0.7" fill="none"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#wavy-grid)"/>
+    </svg>
+
+    <p class="hero-eyebrow" data-c="hero-eyebrow">Politický manifest · Česká republika · 2026</p>
+
+    <div class="hero-title-wrap">
+      <div id="wave-title" aria-label="nová~vlna">
+        <div class="word" id="word-nova"></div>
+        <div class="word" id="word-tilde"></div>
+        <div class="word" id="word-vlna"></div>
+      </div>
+    </div>
+
+    <p class="hero-sub" data-c="hero-sub">
+      Věříme, že Česká republika může být sebevědomá, silná a respektovaná.<br>
+      Změna společnosti začíná u každého z nás.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#pridat-se" class="btn-dark" data-c="btn-primary">Přidej se</a>
+      <a href="#zasady" class="btn-outline" data-c="btn-secondary">Náš program</a>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ─── QUOTE ────────────────────────────────────────────── -->
+  <section class="quote-band">
+    <blockquote class="reveal" data-c="quote-text">
+      „Nová vlna vychází z přesvědčení, že změna společnosti začíná u každého z&nbsp;nás."
+    </blockquote>
+    <p class="quote-source reveal reveal-d1" data-c="quote-source">Nová vlna · Manifest osobní odpovědnosti</p>
+  </section>
+
+  <!-- ─── ZÁSADY ───────────────────────────────────────────── -->
+  <section class="section-program" id="zasady">
+    <div class="section-header">
+      <div>
+        <p class="section-label reveal" data-c="zasady-label">Co hájíme</p>
+        <h2 class="section-title reveal reveal-d1" data-c="zasady-title">Zásady<br>manifestu.</h2>
+      </div>
+      <p class="section-subtitle reveal reveal-d2" data-c="zasady-subtitle">
+        Žádné slogany. Žádné prázdné sliby.<br>
+        Jen principy, za které se zodpovídáme.
+      </p>
+    </div>
+
+    <div class="program-list">
+
+      <div class="program-item reveal">
+        <p class="pi-num">01</p>
+        <div class="pi-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3 class="pi-title">Odpovědnost jako základ</h3>
+        <p class="pi-text">Silný stát nezačíná institucemi. Začíná u lidí. Pravidla platí pro všechny stejně. Svoboda jednoho končí tam, kde začíná svoboda druhého.</p>
+      </div>
+
+      <div class="program-item reveal reveal-d1">
+        <p class="pi-num">02</p>
+        <div class="pi-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3 class="pi-title">Stát, který funguje</h3>
+        <p class="pi-text">Efektivní, digitální, transparentní. Audit a modernizace státní správy. Stát, který slouží lidem — ne naopak.</p>
+      </div>
+
+      <div class="program-item reveal">
+        <p class="pi-num">03</p>
+        <div class="pi-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <h3 class="pi-title">Odbornost místo populismu</h3>
+        <p class="pi-text">Rozhodování na datech. Klíčové role pro odborníky. Politika je odpovědnost, ne marketing.</p>
+      </div>
+
+      <div class="program-item reveal reveal-d1">
+        <p class="pi-num">04</p>
+        <div class="pi-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3 class="pi-title">Ekonomika, která tvoří hodnotu</h3>
+        <p class="pi-text">Podnikání, inovace, flexibilní prostředí, rozvoj českého know-how. Chceme ekonomiku, která roste.</p>
+      </div>
+
+      <div class="program-item reveal">
+        <p class="pi-num">05</p>
+        <div class="pi-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <h3 class="pi-title">Vzdělání jako základ budoucnosti</h3>
+        <p class="pi-text">Kritické myšlení, příprava na budoucnost. Vzdělávací systém, který vede k odpovědnosti a iniciativě.</p>
+      </div>
+
+      <div class="program-item reveal reveal-d1">
+        <p class="pi-num">06</p>
+        <div class="pi-icon"><svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3 class="pi-title">Bezpečnost a obrana</h3>
+        <p class="pi-text">Dostatečné investice do obrany, moderní armáda, kybernetická bezpečnost. Aktivní role v Evropě a NATO.</p>
+      </div>
+
+      <div class="program-item reveal">
+        <p class="pi-num">07</p>
+        <div class="pi-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div>
+        <h3 class="pi-title">Energetika bez hazardu</h3>
+        <p class="pi-text">Obnovitelné zdroje, jaderná energie, vlastní infrastruktura. Modernizujeme bez hazardu s bezpečností.</p>
+      </div>
+
+      <div class="program-item reveal reveal-d1">
+        <p class="pi-num">08</p>
+        <div class="pi-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3 class="pi-title">Silná Evropa, silná ČR</h3>
+        <p class="pi-text">Aktivní a vlivný hráč v EU. Sjednocování systémů v rámci Evropy a NATO. Svět je multipolární — my chceme být u toho.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── VALUES TICKER ─────────────────────────────────────── -->
+  <div class="values-strip" aria-hidden="true">
+    <div class="values-ticker" id="ticker"></div>
+  </div>
+
+  <!-- ─── PHILOSOPHY ───────────────────────────────────────── -->
+  <section class="section-philosophy" id="o-nas">
+    <div class="philosophy-inner">
+      <div class="phil-left">
+        <p class="section-label reveal" data-c="phil-label">Proč to děláme</p>
+        <h2 class="section-title reveal reveal-d1" style="margin-bottom:2rem;" data-c="phil-title">Víc než<br>politika.</h2>
+        <p class="reveal reveal-d2" data-c="phil-text-1">
+          Nová vlna nestojí na prázdných slibech.
+          Stojí na přesvědčení, že změna začíná u každého z nás.
+        </p>
+        <p class="reveal reveal-d2" data-c="phil-text-2">
+          Nevěříme na jednoduchá řešení.
+          Věříme v odpovědnost, práci a dlouhodobou vizi.
+          Tvoříme se závazkem k hodnotám, které definoval Václav Havel.
+        </p>
+        <a href="manifest.html" class="phil-link reveal reveal-d3">
+          <span data-c="phil-link">Číst Manifest osobní odpovědnosti</span>
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <div class="phil-right reveal reveal-d2" data-c="phil-values">
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── JOIN ─────────────────────────────────────────────── -->
+  <section class="section-join" id="pridat-se">
+    <p class="join-eyebrow reveal" data-c="join-label">Přidej se</p>
+    <h2 class="join-title reveal reveal-d1" data-c="join-title">Přidej se<br>k vlně.</h2>
+    <p class="join-sub reveal reveal-d2" data-c="join-subtitle">
+      Budoucnost vzniká rozhodnutími, která děláme dnes.
+      Nová vlna je rozhodnutí.
+    </p>
+    <div class="join-actions reveal reveal-d3">
+      <a href="mailto:info@novavlna.cz" class="btn-ghost-light" data-c="join-btn-contact">Kontaktuj nás</a>
+      <a href="manifest.html" class="btn-ghost-light" data-c="join-btn-manifest">Číst manifesty</a>
+    </div>
+  </section>
+
+  <!-- ─── PETITION ─────────────────────────────────────────── -->
+  <section class="section-petition">
+    <div class="petition-inner">
+      <div class="petition-text reveal">
+        <p class="section-label" data-c="pet-label">Podepište manifest</p>
+        <h2 class="section-title" data-c="pet-title">Souhlasíte?<br>Podepište.</h2>
+        <p data-c="pet-text">
+          Pokud sdílíte přesvědčení, že změna společnosti začíná u každého z nás —
+          podepište tento manifest. Váš podpis není závazkem k politické straně.
+          Je prohlášením osobní odpovědnosti.
+        </p>
+      </div>
+      <div class="petition-cta reveal reveal-d2">
+        <div class="petition-counter">
+          <span class="counter-num">—</span>
+          <span class="counter-label">podpisů</span>
+        </div>
+        <a href="podpis.html" class="btn-dark petition-btn" data-c="pet-btn">Podepsat manifest</a>
+        <p class="petition-note" data-c="pet-note">
+          Po podpisu obdržíte e-mail s potvrzením a plným textem obou manifestů.
+          Data zpracováváme v souladu s GDPR.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ───────────────────────────────────────────── -->
+  <footer>
+    <span class="footer-brand">nová<span class="brand-tilde">~</span>vlna</span>
+    <ul class="footer-links" data-c="footer-links">
+      <li><a href="#zasady">Zásady</a></li>
+      <li><a href="manifest.html">Manifest</a></li>
+      <li><a href="#o-nas">O nás</a></li>
+      <li><a href="#pridat-se">Kontakt</a></li>
+    </ul>
+    <p class="footer-copy" data-c="footer-copyright">© 2026 Nová vlna</p>
+  </footer>
+
+  <script>
+  (() => {
+    // ── WAVE TITLE ─────────────────────────────────────────
+    const segments = [
+      { id: 'word-nova',  text: 'nová',  accent: false },
+      { id: 'word-tilde', text: '~',     accent: true  },
+      { id: 'word-vlna',  text: 'vlna',  accent: false },
+    ];
+    const chars = [];
+
+    segments.forEach(({ id, text, accent }) => {
+      const container = document.getElementById(id);
+      [...text].forEach(ch => {
+        const span = document.createElement('span');
+        span.classList.add('char');
+        span.textContent = ch;
+        if (accent) span.style.color = 'var(--accent)';
+        container.appendChild(span);
+        chars.push(span);
+      });
+    });
+
+    // Lerped mouse position — adds natural delay
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let lerpX   = targetX;
+    let lerpY   = targetY;
+
+    document.addEventListener('mousemove', e => {
+      targetX = e.clientX;
+      targetY = e.clientY;
+    });
+
+    function animateWave() {
+      // Lerp: 0.045 = slower/more delayed feel
+      lerpX += (targetX - lerpX) * 0.045;
+      lerpY += (targetY - lerpY) * 0.045;
+
+      chars.forEach(ch => {
+        const rect = ch.getBoundingClientRect();
+        const cx = rect.left + rect.width  / 2;
+        const cy = rect.top  + rect.height / 2;
+        const dist = Math.sqrt((lerpX - cx) ** 2 + (lerpY - cy) ** 2);
+        const maxDist = 200;
+        const inf = Math.max(0, 1 - dist / maxDist);
+        const wave = Math.sin(inf * Math.PI) * -9 * inf; // subtle: 9px max
+        ch.style.transform = `translateY(${wave.toFixed(2)}px)`;
+        ch.style.transition = inf > 0.01
+          ? 'transform 0.12s linear'
+          : 'transform 1s cubic-bezier(0.16,1,0.3,1)';
+      });
+      requestAnimationFrame(animateWave);
+    }
+    animateWave();
+
+    // ── TICKER ─────────────────────────────────────────────
+    const values = [
+      'Odpovědnost', 'Odbornost', 'Efektivní stát',
+      'Svoboda', 'Vzdělání', 'Odvaha', 'Spolupráce',
+      'Inovace', 'Bezpečnost', 'Dlouhodobá vize'
+    ];
+    const ticker = document.getElementById('ticker');
+    // Duplicate for seamless loop
+    [...values, ...values].forEach(v => {
+      const item = document.createElement('div');
+      item.className = 'vt-item';
+      item.innerHTML = `${v}<span class="vt-dot"></span>`;
+      ticker.appendChild(item);
+    });
+
+    // ── SCROLL REVEAL ──────────────────────────────────────
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    reveals.forEach(el => obs.observe(el));
+    window._revealObs = obs;
+
+    // ── NAV SCROLL ─────────────────────────────────────────
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  })();
+  </script>
+  <script src="content.js"></script>
+</body>
+</html>

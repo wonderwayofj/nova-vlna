@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nová~vlna</title>
+  <link rel="stylesheet" href="https://use.typekit.net/wjn4gzj.css" />
+  <style>
+    :root {
+      --cream:  #F2EFEA;
+      --white:  #FAFAF8;
+      --sand:   #E8E2D4;
+      --navy:   #1E2438;
+      --navy60: rgba(30,36,56,0.6);
+      --navy30: rgba(30,36,56,0.3);
+      --navy10: rgba(30,36,56,0.08);
+      --accent: #C94B1A;
+      --roca:   "roca", Georgia, serif;
+      --sans:   -apple-system, "Helvetica Neue", Arial, sans-serif;
+      --ease:   cubic-bezier(0.16,1,0.3,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--navy);
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+
+    /* ── Wavy grid background ─────────────────────────────── */
+    .gate-grid {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Center stage ─────────────────────────────────────── */
+    .gate-wrap {
+      position: relative;
+      z-index: 1;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3.5rem;
+    }
+
+    /* ── Giant wave title ─────────────────────────────────── */
+    #wave-title {
+      display: flex;
+      align-items: baseline;
+      gap: 0;
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: clamp(3.5rem, 11vw, 9rem);
+      line-height: 1;
+      cursor: default;
+      user-select: none;
+    }
+    #wave-title .word { display: flex; }
+    #wave-title .word span {
+      display: inline-block;
+      transition: transform 0.1s linear;
+      color: var(--navy);
+    }
+    #wave-title .word span.tilde-char { color: var(--accent); }
+
+    /* ── Password form ────────────────────────────────────── */
+    .gate-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.9rem;
+      width: min(320px, 85vw);
+    }
+    .gate-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--navy30);
+    }
+    .gate-input-wrap {
+      position: relative;
+      width: 100%;
+    }
+    .gate-input {
+      width: 100%;
+      padding: 15px 54px 15px 24px;
+      font-size: 1rem;
+      font-family: var(--sans);
+      color: var(--navy);
+      background: var(--white);
+      border: 1.5px solid var(--sand);
+      border-radius: 999px;
+      outline: none;
+      text-align: center;
+      letter-spacing: 0.12em;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .gate-input::placeholder { color: var(--navy30); letter-spacing: 0.08em; }
+    .gate-input:focus {
+      border-color: rgba(30,36,56,0.35);
+      box-shadow: 0 0 0 3px rgba(30,36,56,0.06);
+    }
+    .gate-input.error {
+      border-color: #C62828;
+      box-shadow: 0 0 0 3px rgba(198,40,40,0.08);
+      animation: shake 0.38s var(--ease);
+    }
+    .gate-submit {
+      position: absolute;
+      right: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: var(--navy);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.15s;
+      flex-shrink: 0;
+    }
+    .gate-submit:hover {
+      background: #2a3050;
+      transform: translateY(-50%) scale(1.06);
+    }
+    .gate-submit svg {
+      width: 14px; height: 14px;
+      stroke: var(--cream); stroke-width: 2.3;
+      fill: none; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .gate-error {
+      font-size: 0.75rem;
+      color: #C62828;
+      letter-spacing: 0.05em;
+      opacity: 0;
+      transition: opacity 0.2s;
+      height: 1em;
+    }
+    .gate-error.visible { opacity: 1; }
+
+    /* ── Animations ───────────────────────────────────────── */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      18%  { transform: translateX(-9px); }
+      36%  { transform: translateX(9px); }
+      54%  { transform: translateX(-5px); }
+      72%  { transform: translateX(5px); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes fadeOut {
+      to { opacity: 0; }
+    }
+
+    .gate-wrap > * {
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease) forwards;
+    }
+    .gate-wrap > *:nth-child(2) { animation-delay: 0.12s; }
+    .gate-wrap > *:nth-child(3) { animation-delay: 0.22s; }
+
+    body.unlocking {
+      pointer-events: none;
+      animation: fadeOut 0.5s var(--ease) 0.05s forwards;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Redirect immediately if already authenticated -->
+  <script>
+    (function() {
+      if (sessionStorage.getItem('nv_auth') === '1') {
+        var ref = sessionStorage.getItem('nv_ref') || 'index.html';
+        sessionStorage.removeItem('nv_ref');
+        location.replace(ref);
+      }
+    })();
+  </script>
+
+  <!-- Wavy grid -->
+  <svg class="gate-grid" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="gp" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+        <path d="M-80,40 Q-60,37.5 -40,40 Q-20,42.5 0,40 Q20,37.5 40,40 Q60,42.5 80,40 Q100,37.5 120,40 Q140,42.5 160,40"
+              fill="none" stroke="rgba(30,36,56,0.055)" stroke-width="1"/>
+        <path d="M40,-80 Q37.5,-60 40,-40 Q42.5,-20 40,0 Q37.5,20 40,40 Q42.5,60 40,80 Q37.5,100 40,120 Q42.5,140 40,160"
+              fill="none" stroke="rgba(30,36,56,0.055)" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#gp)"/>
+  </svg>
+
+  <div class="gate-wrap">
+
+    <!-- Giant logo -->
+    <div id="wave-title">
+      <div class="word" id="word-nova"></div>
+      <div class="word" id="word-tilde"></div>
+      <div class="word" id="word-vlna"></div>
+    </div>
+
+    <!-- Password -->
+    <div class="gate-form">
+      <span class="gate-label">Přístupové heslo</span>
+      <div class="gate-input-wrap">
+        <input
+          type="password"
+          class="gate-input"
+          id="gate-input"
+          placeholder="••••••••"
+          autocomplete="current-password"
+          autofocus
+        />
+        <button class="gate-submit" id="gate-submit" type="button" aria-label="Vstoupit">
+          <svg viewBox="0 0 24 24">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </button>
+      </div>
+      <span class="gate-error" id="gate-error">Nesprávné heslo</span>
+    </div>
+
+  </div>
+
+  <script src="content.js"></script>
+  <script>
+  (() => {
+    // ── Wave title ───────────────────────────────────────────
+    const segments = [
+      { id: 'word-nova',  chars: 'nová'.split('') },
+      { id: 'word-tilde', chars: ['~'],              tilde: true },
+      { id: 'word-vlna',  chars: 'vlna'.split('') },
+    ];
+    segments.forEach(seg => {
+      const el = document.getElementById(seg.id);
+      seg.chars.forEach(ch => {
+        const s = document.createElement('span');
+        s.textContent = ch;
+        if (seg.tilde) s.classList.add('tilde-char');
+        el.appendChild(s);
+      });
+    });
+
+    const allSpans = Array.from(document.querySelectorAll('#wave-title span'));
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let lerpX = mouseX, lerpY = mouseY;
+    const MAX_AMP = 9, LERP = 0.045;
+
+    document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+
+    (function tick() {
+      lerpX += (mouseX - lerpX) * LERP;
+      lerpY += (mouseY - lerpY) * LERP;
+      allSpans.forEach(span => {
+        const r   = span.getBoundingClientRect();
+        const cx  = r.left + r.width / 2;
+        const cy  = r.top  + r.height / 2;
+        const dx  = lerpX - cx, dy = lerpY - cy;
+        const d   = Math.sqrt(dx * dx + dy * dy);
+        const inf = Math.max(0, 1 - d / 260);
+        span.style.transform = `translateY(${(-inf * inf * MAX_AMP).toFixed(2)}px)`;
+      });
+      requestAnimationFrame(tick);
+    })();
+
+    // ── Password check ──────────────────────────────────────
+    const PASSWORD = window.CONTENT?.gate?.password ?? 'novavlna2026';
+    const input    = document.getElementById('gate-input');
+    const btn      = document.getElementById('gate-submit');
+    const errEl    = document.getElementById('gate-error');
+
+    function attempt() {
+      if (input.value === PASSWORD) {
+        sessionStorage.setItem('nv_auth', '1');
+        document.body.classList.add('unlocking');
+        const ref = sessionStorage.getItem('nv_ref') || 'index.html';
+        sessionStorage.removeItem('nv_ref');
+        setTimeout(() => location.replace(ref), 520);
+      } else {
+        input.classList.remove('error');
+        void input.offsetWidth; // restart CSS animation
+        input.classList.add('error');
+        errEl.classList.add('visible');
+        input.select();
+        setTimeout(() => {
+          input.classList.remove('error');
+          errEl.classList.remove('visible');
+        }, 2200);
+      }
+    }
+
+    btn.addEventListener('click', attempt);
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') attempt(); });
+  })();
+  </script>
+
+</body>
+</html>

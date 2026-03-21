@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manifest osobní odpovědnosti — nová vlna</title>
+  <link rel="stylesheet" href="https://use.typekit.net/wjn4gzj.css" />
+  <style>
+    :root {
+      --cream:  #F2EFEA;
+      --white:  #FAFAF8;
+      --sand:   #E8E2D4;
+      --sand2:  #CBC5A5;
+      --navy:   #1E2438;
+      --navy60: rgba(30,36,56,0.6);
+      --navy30: rgba(30,36,56,0.3);
+      --navy10: rgba(30,36,56,0.08);
+      --accent: #C94B1A;
+      --accent2:#E06030;
+      --roca: "roca", Georgia, serif;
+      --sans: -apple-system, "Helvetica Neue", Arial, sans-serif;
+      --ease: cubic-bezier(0.16,1,0.3,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--navy);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 68px;
+      padding: 0 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(242,239,234,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--navy10);
+    }
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy30);
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--navy); }
+    .nav-back svg {
+      width: 14px; height: 14px;
+      stroke: currentColor; stroke-width: 2.2;
+      fill: none; stroke-linecap: round; stroke-linejoin: round;
+      transition: transform 0.2s;
+    }
+    .nav-back:hover svg { transform: translateX(-3px); }
+    .nav-brand {
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      color: var(--navy);
+    }
+    .brand-tilde {
+      color: var(--accent);
+      margin: 0 0.03em;
+    }
+
+    /* HERO */
+    .manifest-hero {
+      background: var(--white);
+      padding: 140px 10vw 8rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--sand);
+    }
+    .manifest-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--navy10) 1px, transparent 1px),
+        linear-gradient(90deg, var(--navy10) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 80% 100% at 0% 50%, black 20%, transparent 80%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .manifest-hero h1 {
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: clamp(2.8rem, 6.5vw, 6rem);
+      line-height: 1.0;
+      color: var(--navy);
+      max-width: 14ch;
+      margin-bottom: 1.8rem;
+      position: relative;
+    }
+    .manifest-hero .hero-sub {
+      font-size: clamp(1rem, 1.3vw, 1.12rem);
+      color: var(--navy60);
+      max-width: 52ch;
+      line-height: 1.78;
+    }
+
+    /* INTRO */
+    .intro-verse {
+      background: var(--sand);
+      padding: 6rem 10vw;
+      display: flex;
+      align-items: center;
+      gap: 6rem;
+    }
+    .intro-verse-text p {
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      line-height: 1.25;
+      color: var(--navy);
+    }
+    .intro-verse-text p.muted {
+      color: var(--navy30);
+    }
+
+    /* BODY */
+    .manifest-body {
+      background: var(--cream);
+      padding: 8rem 10vw;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 6rem;
+      align-items: start;
+    }
+    @media (max-width: 960px) {
+      .manifest-body { grid-template-columns: 1fr; gap: 3rem; }
+      .intro-verse { flex-direction: column; gap: 2rem; }
+    }
+
+    /* Content */
+    .manifest-content {}
+    .chapter-title {
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      line-height: 1.1;
+      color: var(--navy);
+      margin: 4rem 0 1.2rem;
+    }
+    .chapter-title:first-child { margin-top: 0; }
+    .manifest-content p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--navy60);
+      margin-bottom: 1.4rem;
+    }
+    .accent-rule {
+      width: 36px;
+      height: 2.5px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin: 3rem 0;
+    }
+    .manifest-content ul {
+      list-style: none;
+      margin: 1rem 0 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .manifest-content ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      color: var(--navy60);
+    }
+    .manifest-content ul li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      margin-top: 0.58em;
+      flex-shrink: 0;
+    }
+
+    /* Dark action box */
+    .action-box {
+      background: var(--navy);
+      border-radius: 10px;
+      padding: 2.5rem;
+      margin: 2rem 0;
+    }
+    .action-box ul li { color: rgba(242,239,234,0.65); }
+    .action-box ul li::before { background: var(--accent); }
+
+    /* Closing */
+    .closing {
+      margin-top: 3rem;
+      padding: 2rem 2.2rem;
+      border-left: 3px solid var(--accent);
+      background: rgba(201,75,26,0.05);
+      border-radius: 0 8px 8px 0;
+    }
+    .closing p {
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--navy);
+      line-height: 1.4;
+      margin: 0 !important;
+    }
+
+    /* Sidebar */
+    .manifest-sidebar {
+      position: sticky;
+      top: 88px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .sidebar-card {
+      background: var(--navy);
+      border-radius: 10px;
+      padding: 2.2rem;
+    }
+    .sidebar-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.9rem;
+    }
+    .sidebar-card p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: rgba(242,239,234,0.55);
+      margin-bottom: 1.5rem;
+    }
+    .sidebar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--cream);
+      transition: color 0.2s;
+    }
+    .sidebar-link:hover { color: var(--accent); }
+    .sidebar-link svg {
+      width: 13px; height: 13px;
+      stroke: currentColor; stroke-width: 2.2;
+      fill: none; stroke-linecap: round; stroke-linejoin: round;
+      transition: transform 0.2s;
+    }
+    .sidebar-link:hover svg { transform: translateX(3px); }
+    .sidebar-quote {
+      background: var(--sand);
+      border-radius: 10px;
+      padding: 2.2rem;
+    }
+    .sidebar-quote::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2.5px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 1.1rem;
+    }
+    .sidebar-quote p {
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--navy);
+      line-height: 1.45;
+    }
+
+    /* CTA BAND */
+    .cta-band {
+      background: var(--navy);
+      padding: 7rem 10vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 120% at 100% 50%, rgba(201,75,26,0.12), transparent);
+      pointer-events: none;
+    }
+    .cta-band h2 {
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: var(--cream);
+      line-height: 1.1;
+      max-width: 22ch;
+      position: relative;
+    }
+    .btn-accent {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      position: relative;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-accent:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 35px rgba(201,75,26,0.3);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--cream);
+      padding: 3rem 10vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      border-top: 1px solid var(--sand);
+    }
+    .footer-brand {
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      color: var(--navy30);
+    }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--navy30);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--navy); }
+    .footer-copy { font-size: 0.75rem; color: var(--navy30); }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 6vw; }
+      .manifest-hero, .manifest-body, .cta-band { padding-left: 6vw; padding-right: 6vw; }
+      footer { padding: 2.5rem 6vw; flex-direction: column; gap: 1rem; }
+    }
+  </style>
+</head>
+<body data-page="manifest">
+  <script>if(sessionStorage.getItem('nv_auth')!=='1'){sessionStorage.setItem('nv_ref',location.href);location.replace('gate.html');}</script>
+
+  <nav>
+    <a href="index.html" class="nav-back">
+      <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      nová<span class="brand-tilde">~</span>vlna
+    </a>
+    <span class="nav-brand">manifest</span>
+  </nav>
+
+  <header class="manifest-hero">
+    <p class="hero-eyebrow reveal" data-c="m-eyebrow">Naše filozofie</p>
+    <h1 class="reveal reveal-d1" data-c="m-title">Manifest osobní odpovědnosti</h1>
+    <p class="hero-sub reveal reveal-d2" data-c="m-subtitle">
+      Hlubší pohled na to, proč Nová vlna existuje.<br>
+      Pro těch 5 % — kteří chtějí pochopit víc.
+    </p>
+  </header>
+
+  <section class="intro-verse">
+    <div class="intro-verse-text reveal">
+      <p data-c="m-intro-1">Člověk není pouze pozorovatelem světa.</p>
+      <p class="muted" data-c="m-intro-2">Člověk je jeho tvůrcem.</p>
+    </div>
+  </section>
+
+  <section class="manifest-body">
+    <article class="manifest-content" data-c="m-body"></article>
+
+    <aside class="manifest-sidebar">
+      <div class="sidebar-card reveal reveal-d1">
+        <p class="sidebar-label" data-c="m-sidebar-label">Odkud vychází nová vlna</p>
+        <p data-c="m-sidebar-text">Tento manifest stojí v základech hnutí. Než jsme formulovali program, formulovali jsme hodnoty.</p>
+        <a href="index.html" class="sidebar-link">
+          <span data-c="m-sidebar-link">Zpět na hlavní stránku</span>
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <div class="sidebar-quote reveal reveal-d2">
+        <p data-c="m-sidebar-quote">„Nová vlna vychází z přesvědčení, že změna společnosti začíná u každého z nás."</p>
+      </div>
+    </aside>
+  </section>
+
+  <section class="cta-band">
+    <h2 class="reveal" data-c="m-cta-title">Jsi jedním z nás.<br>Přidej se k vlně.</h2>
+    <a href="podpis.html" class="btn-accent reveal reveal-d1" data-c="m-cta-btn">Přidej se</a>
+  </section>
+
+  <footer>
+    <span class="footer-brand">nová<span class="brand-tilde">~</span>vlna</span>
+    <ul class="footer-links" data-c="footer-links">
+      <li><a href="index.html#zasady">Zásady</a></li>
+      <li><a href="manifest.html">Manifest</a></li>
+      <li><a href="index.html#o-nas">O nás</a></li>
+      <li><a href="index.html#pridat-se">Kontakt</a></li>
+    </ul>
+    <p class="footer-copy" data-c="footer-copyright">© 2026 Nová vlna</p>
+  </footer>
+
+  <script src="content.js"></script>
+  <script>
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    window._revealObs = obs;
+    // Initial pass — content.js DOMContentLoaded fires first and populates m-body,
+    // so we observe after a microtask to catch dynamic elements too.
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    });
+  </script>
+</body>
+</html>
