@@ -50,6 +50,21 @@
       fill: none; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.2s;
     }
     .nav-back:hover svg { transform: translateX(-3px); }
+    .lang-btn {
+      margin-left: auto;
+      padding: 5px 13px;
+      border-radius: 999px;
+      border: 1.5px solid rgba(30,36,56,0.18);
+      background: transparent;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--navy60);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      font-family: var(--sans);
+    }
+    .lang-btn:hover { border-color: var(--navy); color: var(--navy); }
     .nav-brand { font-family: var(--roca); font-weight: 700; font-size: 1rem; color: var(--navy); }
     .brand-tilde { color: var(--accent); }
 
@@ -293,6 +308,7 @@
       zpět
     </a>
     <span class="nav-brand">nová<span class="brand-tilde">~</span>vlna</span>
+    <button class="lang-btn" id="lang-btn" onclick="NV_setLang(NV_LANG==='cs'?'en':'cs')" aria-label="Switch language">EN</button>
   </nav>
 
   <div class="page-wrap">

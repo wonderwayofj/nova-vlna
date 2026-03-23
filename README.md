@@ -1,186 +1,139 @@
 # nová~vlna
 
-Statický web pro politický manifest **nová~vlna** — postavený v čistém HTML/CSS/JS bez frameworků.
+Static website for the **Nová vlna** political manifesto — Czech Republic, 2026.
+
+Built with plain HTML, CSS and JavaScript. No frameworks, no build step.
 
 ---
 
-## Struktura projektu
+## Pages
 
-```
-nova-vlna/
-├── index.html        # Hlavní strana
-├── manifest.html     # Manifest osobní odpovědnosti (celý text)
-├── podpis.html       # Formulář pro podpis petice
-├── gate.html         # Přihlašovací brána (heslo)
-├── content.js        # ← TADY SE EDITUJÍ VEŠKERÉ TEXTY
-└── gas/
-    └── Code.gs       # Google Apps Script backend (petice + emaily)
-```
+| File | URL | Description |
+|------|-----|-------------|
+| `gate.html` | `/gate.html` | Password gate — shown to all visitors first |
+| `index.html` | `/` | Main page — hero, principles, philosophy, petition |
+| `manifest.html` | `/manifest.html` | Manifesto of Personal Responsibility |
+| `podpis.html` | `/podpis.html` | Signature / petition form |
 
 ---
 
-## Jak editovat texty
+## Editing content
 
-**Otevřete `content.js`** — je to jediný soubor, který potřebujete upravovat. HTML soubory neměňte.
+**All text lives in one file: `content.js`**
 
-Soubor obsahuje objekt `CONTENT` rozdělený do sekcí:
+Open it and edit the values in the `CONTENT` object. Do not touch the HTML files.
 
-| Sekce | Co obsahuje |
-|---|---|
-| `gate` | Přístupové heslo |
-| `nav` | Položky navigace |
-| `hero` | Úvodní text a tlačítka hlavní strany |
-| `quote` | Citát pod hero sekcí |
-| `zasady` | 8 zásad manifestu (číslo, nadpis, text) |
-| `values_ticker` | Hodnoty v animovaném tickeru |
-| `philosophy` | Sekce „Kdo jsme" |
-| `join` | Sekce „Přidejte se" |
-| `petition` | Sekce s výzvou k podpisu |
-| `manifest_page` | Celý text manifestu (kapitoly, odstavce) |
-| `petition_page` | Texty na stránce s formulářem |
-| `footer` | Patička (odkazy, copyright) |
+```
+CONTENT
+├── gate.password        ← access password
+├── cs                   ← Czech texts
+│   ├── nav
+│   ├── hero
+│   ├── quote
+│   ├── zasady (+ items array)
+│   ├── values_ticker
+│   ├── philosophy
+│   ├── join
+│   ├── petition
+│   ├── manifest_page (+ chapters array)
+│   ├── petition_page
+│   └── footer
+└── en                   ← English texts (same structure)
+```
 
-### Příklad — změna hesla
+### Changing the password
+
+In `content.js`, find the `gate` block:
 
 ```js
 gate: {
-  password: 'noveheslo123',   // ← sem napište nové heslo
+  password: 'novavlna2026',  // ← change this
 },
 ```
 
-### Příklad — změna titulku na hlavní straně
+### Changing the default language
+
+At the bottom of `content.js`:
 
 ```js
-hero: {
-  eyebrow:  'Politický manifest · Česká republika · 2026',
-  subtitle: 'Váš nový text zde...',
-  ...
-},
-```
-
-### Příklad — přidání/úprava zásady
-
-```js
-zasady: {
-  items: [
-    {
-      num:   '01',
-      title: 'Název zásady',
-      text:  'Popis zásady.',
-    },
-    // ... dalších 7 zásad
-  ],
-},
+window.NV_LANG = localStorage.getItem('nv_lang') || 'cs';
+//                                                    ↑ change to 'en' for English default
 ```
 
 ---
 
-## Přístupová brána (heslo)
+## Language switcher
 
-Web je chráněn heslem. Při návštěvě jakékoliv stránky se uživatel přesměruje na `gate.html`, kde zadá heslo.
+An **EN / CS** toggle button appears in the navigation on every page.
+The chosen language is stored in `localStorage` and persists across page loads.
 
-- **Heslo se mění** v `content.js` → sekce `gate.password`
-- Po správném zadání se token uloží do `sessionStorage` — heslo se neptá znovu do zavření záložky
-- Ochrana funguje na klientovi (JS) — vhodná pro preview / omezení náhodných návštěvníků, ne pro citlivá data
-
----
-
-## Petice & Google Sheets
-
-Formulář na `podpis.html` posílá data do **Google Apps Scriptu**, který:
-1. Uloží jméno + email do Google Tabulky
-2. Odešle potvrzovací email s textem manifestu
-
-### Nastavení backendu
-
-1. Otevřete [Google Sheets](https://sheets.google.com) → vytvořte novou tabulku
-2. Zkopírujte **ID tabulky** z URL: `https://docs.google.com/spreadsheets/d/`**`TOTO_JE_ID`**`/edit`
-3. Jděte na **Rozšíření → Apps Script**
-4. Nahraďte obsah souborem `gas/Code.gs`
-5. Nastavte konstanty na začátku souboru:
-
-```js
-const SHEET_ID   = 'vase-spreadsheet-id';
-const FROM_EMAIL = 'vas@gmail.com';
-const SITE_URL   = 'https://vas-web.cz';
-```
-
-6. Klikněte **Nasadit → Nové nasazení**
-   - Typ: **Webová aplikace**
-   - Přistupovat jako: **Já**
-   - Přístup: **Kdokoli**
-7. Zkopírujte URL webové aplikace
-8. Vložte ji do `podpis.html` na řádek s `GAS_URL`:
-
-```js
-const GAS_URL = 'https://script.google.com/macros/s/XXXX/exec';
-```
+To edit translations, update the `cs` or `en` blocks in `content.js`.
 
 ---
 
-## Design
+## Font
 
-### Barvy
-
-| Proměnná | Hex | Použití |
-|---|---|---|
-| `--cream` | `#F2EFEA` | Hlavní pozadí |
-| `--sand` | `#E8E2D4` | Sekundární pozadí, karty |
-| `--navy` | `#1E2438` | Texty, tmavé prvky |
-| `--accent` | `#C94B1A` | Oranžovo-červená, vlnková pomlčka, akcenty |
-
-### Písmo
-
-Web používá **Roca** (Adobe Typekit, kit `wjn4gzj`) — tučný řez (700).
-Fallback: Georgia, serif.
-
-### Klíčové vizuální prvky
-
-- **Vlnová animace loga** — každé písmeno v `nová~vlna` reaguje na pohyb myši s lerp zpožděním
-- **SVG mřížka** — pozadí hero sekce tvoří jemně zvlněné čáry (SVG pattern)
-- **Pill tlačítka** — `border-radius: 999px`
-- **Scroll reveal** — sekce se plynule objevují při scrollování (IntersectionObserver)
-- **Ticker hodnot** — animovaný horizontální běžec v sekci filosofie
+Uses **Roca** (weight 700) from Adobe Fonts via Typekit kit `wjn4gzj`.
+Requires an active Adobe Fonts subscription tied to the domain.
 
 ---
 
-## Spuštění lokálně
+## Colours
 
-```bash
-# Pomocí Node.js
-npx serve .
+| Variable | Hex | Usage |
+|----------|-----|-------|
+| `--cream` | `#F2EFEA` | Page background |
+| `--sand` | `#E8E2D4` | Subtle accents, borders |
+| `--navy` | `#1E2438` | Text, dark elements |
+| `--accent` | `#C94B1A` | Orange-red — tilde, CTAs |
 
-# Nebo Python
-python3 -m http.server 8000
-```
+---
 
-Otevřete `http://localhost:3000` (nebo příslušný port).
+## Petition form & Google Sheets
 
-> ⚠️ Soubory nelze otevřít přímo z disku (`file://`) kvůli CORS omezením prohlížeče.
+The `podpis.html` form posts to a **Google Apps Script** web app.
+
+**Setup:**
+1. Copy `gas/Code.gs` into a new Google Apps Script project at [script.google.com](https://script.google.com).
+2. Set the constants at the top (`SHEET_ID`, `FROM_EMAIL`, `SITE_URL`, etc.).
+3. **Deploy → New deployment → Web App** — access: **Anyone**.
+4. Copy the deployment URL into `podpis.html`:
+   ```js
+   const GAS_URL = 'YOUR_GAS_URL_HERE';  // ← paste here
+   ```
+
+The script saves each submission to Google Sheets and sends a branded HTML confirmation email with the full manifesto text.
 
 ---
 
 ## Deployment
 
-Web jsou čisté statické soubory — nasadíte je na jakýkoliv hosting:
+### Netlify (recommended — free, works with private GitHub repos)
 
-- **GitHub Pages** — zdarma, přímo z tohoto repozitáře
-- **Netlify / Vercel** — drag & drop nebo napojení na GitHub
-- **Vlastní server** — nahrajte soubory do rootu
+1. [netlify.com](https://netlify.com) → **Add new site → Import from GitHub**
+2. Select `nova-vlna`, leave build settings empty (pure static site)
+3. Click **Deploy** — done in ~30 seconds
 
-### GitHub Pages
+Set a custom domain in: **Netlify dashboard → Domain management**.
 
-1. Jděte na **Settings → Pages**
-2. Source: **Deploy from a branch → main → / (root)**
-3. Web bude na `https://wonderwayofj.github.io/nova-vlna`
+### GitHub Pages (requires public repository)
+
+**Settings → Pages → Source: Deploy from branch → `main` → `/ (root)`**
+
+URL will be: `https://wonderwayofj.github.io/nova-vlna`
 
 ---
 
-## Soubory nezahrnuté v repozitáři
+## File structure
 
-Následující soubory jsou v `.gitignore` a nenahrají se na GitHub:
-
-- `*.pdf` — zdrojové dokumenty
-- `*.ai` — Adobe Illustrator soubory
-- `*.pages` — Apple Pages dokumenty
-- `.DS_Store` — systémové soubory macOS
+```
+nova-vlna/
+├── index.html       Main page
+├── manifest.html    Manifesto subpage
+├── podpis.html      Petition / signature form
+├── gate.html        Password gate
+├── content.js       ← ALL editable text lives here
+├── gas/
+│   └── Code.gs      Google Apps Script backend template
+└── README.md
+```
