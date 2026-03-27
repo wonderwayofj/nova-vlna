@@ -1,17 +1,4 @@
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-Thumbs.db
-
-# Source files (not for web)
+*.pdf
 *.ai
 *.pages
-*.pdf
-
-# Editor
-.vscode/
-.idea/
-
-# Logs
-*.log
+.DS_Store
