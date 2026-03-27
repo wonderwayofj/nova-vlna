@@ -459,18 +459,10 @@ function _render() {
     _set('[data-c="zasady-title"]',    T.zasady.title);
     _set('[data-c="zasady-subtitle"]', T.zasady.subtitle);
 
-    const zasadyGrid = document.querySelector('[data-c="zasady-grid"]');
-    if (zasadyGrid) {
-      zasadyGrid.innerHTML = T.zasady.items.map(item => `
-        <div class="program-item reveal">
-          <p class="pi-num">${item.num}</p>
-          <h3 class="pi-title">${item.title}</h3>
-          <p class="pi-text">${item.text}</p>
-        </div>`).join('');
-      if (window._revealObs) {
-        zasadyGrid.querySelectorAll('.reveal').forEach(el => window._revealObs.observe(el));
-      }
-    }
+    T.zasady.items.forEach((item, i) => {
+      _set(`[data-c="zasady-${i}-title"]`, item.title);
+      _set(`[data-c="zasady-${i}-text"]`,  item.text);
+    });
 
     // Values ticker
     const ticker = document.getElementById('ticker');
