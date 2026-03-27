@@ -58,7 +58,7 @@ const CONTENT = {
         { num: '04', title: 'Ekonomika, která tvoří hodnotu',  text: 'Podnikání, inovace, flexibilní prostředí, rozvoj českého know-how. Chceme ekonomiku, která roste.' },
         { num: '05', title: 'Vzdělání jako základ budoucnosti',text: 'Kritické myšlení, příprava na budoucnost. Vzdělávací systém, který vede k odpovědnosti a iniciativě.' },
         { num: '06', title: 'Bezpečnost a obrana',             text: 'Dostatečné investice do obrany, moderní armáda, kybernetická bezpečnost. Aktivní role v Evropě a NATO.' },
-        { num: '07', title: 'Energetika bez hazardu',          text: 'Obnovitelné zdroje, jaderná energie, vlastní infrastruktura. Modernizujeme bez hazardu s bezpečností.' },
+        { num: '07', title: 'Energetika bez hazardu',          text: 'Rozvoj obnovitelných zdrojů ze strategických důvodů a nezávislosti, jaderná energie, vlastní infrastruktura.' },
         { num: '08', title: 'Silná Evropa, silná ČR',          text: 'Aktivní a vlivný hráč v EU. Sjednocování systémů v rámci Evropy a NATO. Svět je multipolární — my chceme být u toho.' },
       ],
     },
