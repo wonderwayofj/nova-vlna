@@ -111,7 +111,7 @@ const CONTENT = {
     manifest_page: {
       eyebrow:  'Naše filozofie',
       title:    'Manifest osobní odpovědnosti',
-      subtitle: 'Hlubší pohled na to, proč Nová vlna existuje.<br>Pro těch 5 % — kteří chtějí pochopit víc.',
+      subtitle: 'Hlubší pohled na to, proč Nová vlna existuje.',
       intro_1:  'Člověk není pouze pozorovatelem světa.',
       intro_2:  'Člověk je jeho tvůrcem.',
       chapters: [
@@ -297,7 +297,7 @@ const CONTENT = {
     manifest_page: {
       eyebrow:  'Our philosophy',
       title:    'Manifesto of Personal Responsibility',
-      subtitle: 'A deeper look at why Nová vlna exists.<br>For the 5% — who want to understand more.',
+      subtitle: 'A deeper look at why Nová vlna exists.',
       intro_1:  'A person is not merely an observer of the world.',
       intro_2:  'A person is its creator.',
       chapters: [
