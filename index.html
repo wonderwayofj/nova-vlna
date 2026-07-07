@@ -169,6 +169,10 @@
       will-change: transform;
     }
 
+    .hero-sub .sub-2 {
+      display: block;
+      margin-top: 1.1rem;
+    }
     .hero-sub {
       font-size: clamp(1rem, 1.4vw, 1.15rem);
       color: var(--navy60);
@@ -202,8 +206,9 @@
     .btn-outline {
       display: inline-block;
       font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       padding: 14px 36px;
       border: 1.5px solid var(--navy30);
       color: var(--navy);
@@ -283,6 +288,33 @@
       border-radius: 2px;
       margin-bottom: 2rem;
     }
+    .quote-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 2.2rem;
+      padding: 13px 34px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cream);
+      border: 1.5px solid rgba(242,239,234,0.25);
+      border-radius: 999px;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+    .quote-btn:hover {
+      border-color: var(--accent);
+      background: rgba(201,75,26,0.12);
+      transform: translateY(-2px);
+    }
+    .quote-btn svg {
+      width: 13px; height: 13px;
+      stroke: currentColor; stroke-width: 2.2;
+      fill: none; stroke-linecap: round; stroke-linejoin: round;
+      transition: transform 0.2s;
+    }
+    .quote-btn:hover svg { transform: translateX(3px); }
     .quote-source {
       margin-top: 2rem;
       font-size: 0.8rem;
@@ -431,8 +463,13 @@
     .philosophy-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 6rem;
+      gap: 9.5rem;
       align-items: center;
+    }
+    .section-philosophy .section-label {
+      text-transform: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
     }
     .phil-left {}
     .phil-left p {
@@ -488,11 +525,12 @@
     .phil-value:first-child { border-top: 1px solid rgba(30,36,56,0.12); }
     .phil-value-num {
       font-family: var(--roca);
-      font-size: 0.7rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--accent);
       letter-spacing: 0.05em;
       min-width: 28px;
+      line-height: 1;
     }
 
     /* ─── JOIN ─────────────────────────────────────────────── */
@@ -559,8 +597,9 @@
     .btn-ghost-light {
       display: inline-block;
       font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       padding: 15px 40px;
       border: 1.5px solid rgba(242,239,234,0.2);
       color: rgba(242,239,234,0.7);
@@ -621,7 +660,6 @@
       color: var(--navy30);
     }
     .petition-btn {
-      font-size: 0.9rem !important;
       padding: 17px 44px !important;
     }
     .petition-note {
@@ -714,7 +752,7 @@
     <a href="index.html" class="nav-brand">nová<span class="brand-tilde">~</span>vlna</a>
     <ul class="nav-links">
       <li><a href="#program" data-c="nav-zasady">Zásady</a></li>
-      <li><a href="#o-nas" data-c="nav-o-nas">O nás</a></li>
+      <li><a href="#o-nas" data-c="nav-o-nas">O&nbsp;nás</a></li>
       <li><a href="manifest.html" data-c="nav-proc">Proč to děláme?</a></li>
       <li><a href="podpis.html" class="nav-cta" data-c="nav-podepsat">Podepsat</a></li>
     </ul>
@@ -751,13 +789,13 @@
     </div>
 
     <p class="hero-sub" data-c="hero-sub">
-      Věříme, že Česká republika může být sebevědomá, silná a respektovaná.<br>
-      Změna společnosti začíná u každého z nás.
+      Věříme, že Česká republika může být sebevědomá, silná a&nbsp;respektovaná.
+      <span class="sub-2">Změna společnosti začíná u&nbsp;každého z&nbsp;nás.</span>
     </p>
 
     <div class="hero-actions">
       <a href="#pridat-se" class="btn-dark" data-c="btn-primary">Přidej se</a>
-      <a href="#zasady" class="btn-outline" data-c="btn-secondary">Náš program</a>
+      <a href="#zasady" class="btn-outline" data-c="btn-secondary">Zásady</a>
     </div>
 
     <div class="scroll-hint">
@@ -769,9 +807,13 @@
   <!-- ─── QUOTE ────────────────────────────────────────────── -->
   <section class="quote-band">
     <blockquote class="reveal" data-c="quote-text">
-      „Nová vlna vychází z přesvědčení, že změna společnosti začíná u každého z&nbsp;nás."
+      „Nová vlna vychází z&nbsp;přesvědčení, že změna společnosti začíná u&nbsp;každého z&nbsp;nás."
     </blockquote>
     <p class="quote-source reveal reveal-d1" data-c="quote-source">Nová vlna · Manifest osobní odpovědnosti</p>
+    <a href="manifest.html" class="quote-btn reveal reveal-d2">
+      <span data-c="quote-btn">Číst</span>
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
   </section>
 
   <!-- ─── ZÁSADY ───────────────────────────────────────────── -->
@@ -781,10 +823,6 @@
         <p class="section-label reveal" data-c="zasady-label">Co hájíme</p>
         <h2 class="section-title reveal reveal-d1" data-c="zasady-title">Zásady<br>manifestu.</h2>
       </div>
-      <p class="section-subtitle reveal reveal-d2" data-c="zasady-subtitle">
-        Žádné slogany. Žádné prázdné sliby.<br>
-        Jen principy, za které se zodpovídáme.
-      </p>
     </div>
 
     <div class="program-list">
@@ -793,56 +831,84 @@
         <p class="pi-num">01</p>
         <div class="pi-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h3 class="pi-title" data-c="zasady-0-title">Odpovědnost jako základ</h3>
-        <p class="pi-text" data-c="zasady-0-text">Silný stát nezačíná institucemi. Začíná u lidí. Pravidla platí pro všechny stejně. Svoboda jednoho končí tam, kde začíná svoboda druhého.</p>
+        <p class="pi-text" data-c="zasady-0-text">Silný stát nezačíná institucemi. Začíná u&nbsp;lidí. Věříme ve společnost, kde lidé přebírají odpovědnost za svůj život, pravidla platí pro všechny stejně a&nbsp;svoboda jednoho končí tam, kde začíná svoboda druhého.</p>
       </div>
 
       <div class="program-item reveal reveal-d1">
         <p class="pi-num">02</p>
-        <div class="pi-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-        <h3 class="pi-title" data-c="zasady-1-title">Stát, který funguje</h3>
-        <p class="pi-text" data-c="zasady-1-text">Efektivní, digitální, transparentní. Audit a modernizace státní správy. Stát, který slouží lidem — ne naopak.</p>
+        <div class="pi-icon"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3h6c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z"/><line x1="9" y1="20.5" x2="15" y2="20.5"/><line x1="10" y1="23" x2="14" y2="23"/></svg></div>
+        <h3 class="pi-title" data-c="zasady-1-title">Odbornost místo populismu</h3>
+        <p class="pi-text" data-c="zasady-1-text">Budoucnost nelze řídit dojmy. Rozhodování musí stát na datech a&nbsp;klíčové role mají zastávat odborníci. Politika je odpovědnost, ne marketing.</p>
       </div>
 
       <div class="program-item reveal">
         <p class="pi-num">03</p>
-        <div class="pi-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-        <h3 class="pi-title" data-c="zasady-2-title">Odbornost místo populismu</h3>
-        <p class="pi-text" data-c="zasady-2-text">Rozhodování na datech. Klíčové role pro odborníky. Politika je odpovědnost, ne marketing.</p>
+        <div class="pi-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3 class="pi-title" data-c="zasady-2-title">Stát, který funguje</h3>
+        <p class="pi-text" data-c="zasady-2-text">Chceme stát, který je efektivní, digitální a&nbsp;transparentní. Prosazujeme audit a&nbsp;modernizaci státní správy tak, aby sloužila lidem — ne naopak.</p>
       </div>
 
       <div class="program-item reveal reveal-d1">
         <p class="pi-num">04</p>
-        <div class="pi-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        <h3 class="pi-title" data-c="zasady-3-title">Ekonomika, která tvoří hodnotu</h3>
-        <p class="pi-text" data-c="zasady-3-text">Podnikání, inovace, flexibilní prostředí, rozvoj českého know-how. Chceme ekonomiku, která roste.</p>
+        <div class="pi-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
+        <h3 class="pi-title" data-c="zasady-3-title">Technologie jako nástroj pokroku</h3>
+        <p class="pi-text" data-c="zasady-3-text">Digitalizace je klíčová pro fungující stát. Snižuje byrokracii, zvyšuje efektivitu — a&nbsp;musí být bezpečná.</p>
       </div>
 
       <div class="program-item reveal">
         <p class="pi-num">05</p>
         <div class="pi-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
         <h3 class="pi-title" data-c="zasady-4-title">Vzdělání jako základ budoucnosti</h3>
-        <p class="pi-text" data-c="zasady-4-text">Kritické myšlení, příprava na budoucnost. Vzdělávací systém, který vede k odpovědnosti a iniciativě.</p>
+        <p class="pi-text" data-c="zasady-4-text">Chceme vzdělávací systém, který rozvíjí kritické myšlení, připravuje na budoucnost a&nbsp;vede k&nbsp;odpovědnosti a&nbsp;iniciativě.</p>
       </div>
 
       <div class="program-item reveal reveal-d1">
         <p class="pi-num">06</p>
-        <div class="pi-icon"><svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <h3 class="pi-title" data-c="zasady-5-title">Bezpečnost a obrana</h3>
-        <p class="pi-text" data-c="zasady-5-text">Dostatečné investice do obrany, moderní armáda, kybernetická bezpečnost. Aktivní role v Evropě a NATO.</p>
+        <div class="pi-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <h3 class="pi-title" data-c="zasady-5-title">Zdravá a&nbsp;silná společnost</h3>
+        <p class="pi-text" data-c="zasady-5-text">Investice do zdraví je investice do budoucnosti. Dostupné zdravotnictví, důraz na prevenci a&nbsp;dlouhodobá udržitelnost systému.</p>
       </div>
 
       <div class="program-item reveal">
         <p class="pi-num">07</p>
         <div class="pi-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div>
         <h3 class="pi-title" data-c="zasady-6-title">Energetika bez hazardu</h3>
-        <p class="pi-text" data-c="zasady-6-text">Obnovitelné zdroje, jaderná energie, vlastní infrastruktura. Modernizujeme bez hazardu s bezpečností.</p>
+        <p class="pi-text" data-c="zasady-6-text">Energetická bezpečnost je klíčová. Podporujeme obnovitelné zdroje, jadernou energii a&nbsp;vlastní infrastrukturu. Dokud nemáme jistotu plné stability, zůstáváme i&nbsp;u&nbsp;tradičních zdrojů a&nbsp;zajišťujeme plynulý přechod. Modernizujeme bez hazardu.</p>
       </div>
 
       <div class="program-item reveal reveal-d1">
         <p class="pi-num">08</p>
+        <div class="pi-icon"><svg viewBox="0 0 24 24"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg></div>
+        <h3 class="pi-title" data-c="zasady-7-title">Rozumný přístup ke klimatu</h3>
+        <p class="pi-text" data-c="zasady-7-text">Chceme chránit životní prostředí bez oslabení ekonomiky. Pragmatická řešení, podpora inovací a&nbsp;rovnováha mezi ekologií a&nbsp;růstem.</p>
+      </div>
+
+      <div class="program-item reveal">
+        <p class="pi-num">09</p>
+        <div class="pi-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <h3 class="pi-title" data-c="zasady-8-title">Bezpečnost a&nbsp;obrana</h3>
+        <p class="pi-text" data-c="zasady-8-text">Bezpečnost je základ stability. Dostatečné investice do obrany, moderní armáda, kybernetická bezpečnost a&nbsp;aktivní role v&nbsp;Evropě a&nbsp;NATO.</p>
+      </div>
+
+      <div class="program-item reveal reveal-d1">
+        <p class="pi-num">10</p>
+        <div class="pi-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg></div>
+        <h3 class="pi-title" data-c="zasady-9-title">Strategická nezávislost</h3>
+        <p class="pi-text" data-c="zasady-9-text">Nezávislost znamená připravenost. Vlastní zdroje, záložní řešení, odolnost proti výpadkům. Když přijde krize, stát funguje.</p>
+      </div>
+
+      <div class="program-item reveal">
+        <p class="pi-num">11</p>
+        <div class="pi-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3 class="pi-title" data-c="zasady-10-title">Ekonomika, která tvoří hodnotu</h3>
+        <p class="pi-text" data-c="zasady-10-text">Podporujeme podnikání a&nbsp;inovace, flexibilní pracovní prostředí a&nbsp;rozvoj českého know-how. Chceme ekonomiku, která roste a&nbsp;tvoří hodnotu.</p>
+      </div>
+
+      <div class="program-item reveal reveal-d1">
+        <p class="pi-num">12</p>
         <div class="pi-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-        <h3 class="pi-title" data-c="zasady-7-title">Silná Evropa, silná ČR</h3>
-        <p class="pi-text" data-c="zasady-7-text">Aktivní a vlivný hráč v EU. Sjednocování systémů v rámci Evropy a NATO. Svět je multipolární — my chceme být u toho.</p>
+        <h3 class="pi-title" data-c="zasady-11-title">Silná Evropa, silná ČR</h3>
+        <p class="pi-text" data-c="zasady-11-text">Chceme být aktivní a&nbsp;vlivný hráč v&nbsp;EU, sjednocovat systémy v&nbsp;rámci Evropy a&nbsp;NATO a&nbsp;posilovat evropskou ekonomiku. Svět je multipolární — my chceme být u&nbsp;toho.</p>
       </div>
 
     </div>
@@ -857,16 +923,16 @@
   <section class="section-philosophy" id="o-nas">
     <div class="philosophy-inner">
       <div class="phil-left">
-        <p class="section-label reveal" data-c="phil-label">Proč to děláme</p>
-        <h2 class="section-title reveal reveal-d1" style="margin-bottom:2rem;" data-c="phil-title">Víc než<br>politika.</h2>
+        <p class="section-label reveal" data-c="phil-label">Proč to děláme?</p>
+        <h2 class="section-title reveal reveal-d1" style="margin-bottom:2rem;" data-c="phil-title">Společnost = politika</h2>
         <p class="reveal reveal-d2" data-c="phil-text-1">
-          Nová vlna nestojí na prázdných slibech.
-          Stojí na přesvědčení, že změna začíná u každého z nás.
+          Nová vlna není politická strana. Je to společenský posun. Zde najdeme soubor hodnot a&nbsp;principů, na kterých se jako společnost můžeme shodnout a&nbsp;kterým se může řídit kdokoli, včetně politických stran.
         </p>
         <p class="reveal reveal-d2" data-c="phil-text-2">
-          Nevěříme na jednoduchá řešení.
-          Věříme v odpovědnost, práci a dlouhodobou vizi.
-          Tvoříme se závazkem k hodnotám, které definoval Václav Havel.
+          Jak chápeme pragmatismus? Jsou to hodnoty popisující důvěryhodnou společnost; konzistence a&nbsp;čitelnost vytvářejí prostředí pro partnery. Chceme být odpovědný partner, který nemlží a&nbsp;nepodvádí. Stavíme na občanské společnosti.
+        </p>
+        <p class="reveal reveal-d2" data-c="phil-text-3">
+          Jde o&nbsp;zdraví společnosti. Bereme odpovědnost do vlastních rukou, rosteme krůček po krůčku — pět procent ročně je udržitelnější než rychlá změna, která vyvolá protitlak. Vymezujeme se proti populismu. Je pro nás důležitý dlouhodobý pokrok, ne krátkodobý zisk.
         </p>
         <a href="manifest.html" class="phil-link reveal reveal-d3">
           <span data-c="phil-link">Číst Manifest osobní odpovědnosti</span>
@@ -881,7 +947,7 @@
   <!-- ─── JOIN ─────────────────────────────────────────────── -->
   <section class="section-join" id="pridat-se">
     <p class="join-eyebrow reveal" data-c="join-label">Přidej se</p>
-    <h2 class="join-title reveal reveal-d1" data-c="join-title">Přidej se<br>k vlně.</h2>
+    <h2 class="join-title reveal reveal-d1" data-c="join-title">Přidej se<br>k&nbsp;vlně.</h2>
     <p class="join-sub reveal reveal-d2" data-c="join-subtitle">
       Budoucnost vzniká rozhodnutími, která děláme dnes.
       Nová vlna je rozhodnutí.
@@ -899,8 +965,8 @@
         <p class="section-label" data-c="pet-label">Podepište manifest</p>
         <h2 class="section-title" data-c="pet-title">Souhlasíte?<br>Podepište.</h2>
         <p data-c="pet-text">
-          Pokud sdílíte přesvědčení, že změna společnosti začíná u každého z nás —
-          podepište tento manifest. Váš podpis není závazkem k politické straně.
+          Pokud sdílíte přesvědčení, že změna společnosti začíná u&nbsp;každého z&nbsp;nás —
+          podepište tento manifest. Váš podpis není závazkem k&nbsp;politické straně.
           Je prohlášením osobní odpovědnosti.
         </p>
       </div>
@@ -911,8 +977,8 @@
         </div>
         <a href="podpis.html" class="btn-dark petition-btn" data-c="pet-btn">Podepsat manifest</a>
         <p class="petition-note" data-c="pet-note">
-          Po podpisu obdržíte e-mail s potvrzením a plným textem obou manifestů.
-          Data zpracováváme v souladu s GDPR.
+          Po podpisu obdržíte e-mail s&nbsp;potvrzením a&nbsp;plným textem obou manifestů.
+          Data zpracováváme v&nbsp;souladu s&nbsp;GDPR.
         </p>
       </div>
     </div>
@@ -924,7 +990,7 @@
     <ul class="footer-links" data-c="footer-links">
       <li><a href="#zasady">Zásady</a></li>
       <li><a href="manifest.html">Manifest</a></li>
-      <li><a href="#o-nas">O nás</a></li>
+      <li><a href="#o-nas">O&nbsp;nás</a></li>
       <li><a href="#pridat-se">Kontakt</a></li>
     </ul>
     <p class="footer-copy" data-c="footer-copyright">© 2026 Nová vlna</p>
