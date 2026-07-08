@@ -65,7 +65,7 @@
       font-family: var(--sans);
     }
     .lang-btn:hover { border-color: var(--navy); color: var(--navy); }
-    .nav-brand { font-family: var(--roca); font-weight: 700; font-size: 1rem; color: var(--navy); }
+    .nav-brand { font-family: var(--roca); font-weight: 700; font-size: 1.05rem; letter-spacing: 0.02em; color: var(--navy); margin-left: 1.4rem; padding-left: 1.4rem; border-left: 1px solid rgba(30,36,56,0.15); }
     .brand-tilde { color: var(--accent); }
 
     /* LAYOUT */
@@ -86,7 +86,7 @@
     /* LEFT — manifest preview */
     .manifest-preview {}
     .mp-label {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em;
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em;
       text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
     }
     .mp-title {
@@ -95,7 +95,7 @@
       color: var(--navy); margin-bottom: 1.8rem;
     }
     .mp-intro {
-      font-size: 1.05rem; color: var(--navy60); line-height: 1.8;
+      font-size: 1.125rem; color: var(--navy60); line-height: 1.8;
       margin-bottom: 2rem; max-width: 52ch;
     }
 
@@ -105,11 +105,11 @@
       padding: 2.5rem; margin-bottom: 1.5rem;
     }
     .mp-excerpt-label {
-      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em;
+      font-size: 0.81rem; font-weight: 700; letter-spacing: 0.18em;
       text-transform: uppercase; color: rgba(242,239,234,0.35); margin-bottom: 1.2rem;
     }
     .mp-excerpt p {
-      font-size: 0.92rem; line-height: 1.75;
+      font-size: 1.05rem; line-height: 1.75;
       color: rgba(242,239,234,0.7); margin-bottom: 0.9rem;
     }
     .mp-excerpt p:last-child { margin-bottom: 0; }
@@ -169,6 +169,11 @@
     .field input::placeholder { color: var(--navy30); }
 
     /* GDPR checkbox */
+    .news-field {
+      background: rgba(30,36,56,0.03) !important;
+      border-color: rgba(30,36,56,0.12) !important;
+      margin-top: -0.6rem !important;
+    }
     .gdpr-field {
       margin: 1.5rem 0;
       padding: 1.2rem 1.4rem;
@@ -204,7 +209,7 @@
     .btn-submit {
       width: 100%;
       padding: 16px;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -224,7 +229,7 @@
 
     /* States */
     .form-error {
-      font-size: 0.82rem; color: #C62828;
+      font-size: 0.9rem; color: #C62828;
       background: rgba(198,40,40,0.07);
       border: 1px solid rgba(198,40,40,0.2);
       border-radius: 6px;
@@ -316,10 +321,11 @@
     <!-- LEFT: Co podepisujete -->
     <div class="manifest-preview">
       <p class="mp-label">Co podepisujete</p>
-      <h1 class="mp-title" data-c="p-title">Politický manifest<br>nová~vlna</h1>
+      <h1 class="mp-title" data-c="p-title">Politický manifest<br>nová<span class="brand-tilde">~</span>vlna</h1>
       <p class="mp-intro" data-c="p-intro">
         Svým podpisem vyjadřujete souhlas s&nbsp;hodnotami a&nbsp;principy, které jsou základem tohoto manifestu.
-        Není to závazek k&nbsp;politické straně. Je to prohlášení osobní odpovědnosti.
+        Není to závazek k&nbsp;politické straně. Je to prohlášení osobní odpovědnosti
+        a&nbsp;souhlas s&nbsp;obsahem stránky.
       </p>
 
       <div class="mp-excerpt">
@@ -328,13 +334,13 @@
           <p><strong>Odpovědnost jako základ.</strong> Silný stát nezačíná institucemi. Začíná u&nbsp;lidí. Pravidla platí pro všechny stejně.</p>
           <p><strong>Odbornost místo populismu.</strong> Rozhodování na datech. Politika je odpovědnost, ne marketing.</p>
           <p><strong>Stát, který funguje.</strong> Efektivní, digitální, transparentní. Slouží lidem — ne naopak.</p>
-          <p><strong>Svoboda a&nbsp;odpovědnost patří k&nbsp;sobě.</strong> Tvoříme místo stěžování. Jednáme místo čekání.</p>
+          <p><strong>Svoboda a&nbsp;zodpovědnost patří k&nbsp;sobě.</strong> Tvoříme místo stěžování. Jednáme místo čekání.</p>
         </div>
       </div>
 
       <div class="mp-links">
-        <a href="manifest.html" class="mp-link">Manifest osobní odpovědnosti →</a>
-        <a href="index.html#zasady" class="mp-link">Zásady manifestu →</a>
+        <a href="manifest.html" class="mp-link" data-c="p-link-manifest">Manifest osobní odpovědnosti →</a>
+        <a href="index.html#zasady" class="mp-link" data-c="p-link-zasady">Jak vidíme stát →</a>
       </div>
     </div>
 
@@ -366,6 +372,11 @@
           <input type="email" id="f-email" name="email" placeholder="jan@example.cz" required autocomplete="email" />
         </div>
 
+        <div class="field">
+          <label for="f-nationality"><span data-c="p-label-nationality">Státní příslušnost</span> *</label>
+          <input type="text" id="f-nationality" name="nationality" placeholder="Česká republika" required autocomplete="country-name" />
+        </div>
+
         <div class="gdpr-field">
           <label class="gdpr-label">
             <input type="checkbox" id="f-gdpr" name="gdpr" required />
@@ -378,6 +389,13 @@
               Více informací o&nbsp;zpracování dat naleznete v
               <a href="#gdpr-info">zásadách ochrany osobních údajů</a>.
             </span>
+          </label>
+        </div>
+
+        <div class="gdpr-field news-field">
+          <label class="gdpr-label">
+            <input type="checkbox" id="f-news" name="newsletter" />
+            <span class="gdpr-text" data-c="p-news-text">Souhlasím se zasíláním informativních e-mailů o&nbsp;Nové vlně. Souhlas mohu kdykoli odvolat.</span>
           </label>
         </div>
 
@@ -465,11 +483,14 @@
 
       const name  = document.getElementById('f-name').value.trim();
       const email = document.getElementById('f-email').value.trim();
+      const nationality = document.getElementById('f-nationality').value.trim();
+      const newsletter  = document.getElementById('f-news').checked;
       const gdpr  = document.getElementById('f-gdpr').checked;
 
       if (!name)  return showError('Zadejte prosím jméno a příjmení.');
       if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
                   return showError('Zadejte prosím platnou e-mailovou adresu.');
+      if (!nationality) return showError('Zadejte prosím státní příslušnost.');
       if (!gdpr)  return showError('Pro odeslání podpisu je nutný souhlas se zpracováním osobních údajů.');
 
       btn.disabled = true;
@@ -480,7 +501,7 @@
           method: 'POST',
           mode: 'no-cors',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, gdpr: true, ts: new Date().toISOString() })
+          body: JSON.stringify({ name, email, nationality, newsletter, gdpr: true, ts: new Date().toISOString() })
         });
 
         // no-cors → opaque response, assume success
@@ -493,7 +514,7 @@
       } catch(err) {
         btn.disabled = false;
         btn.classList.remove('loading');
-        showError('Odeslání selhalo. Zkuste prosím znovu nebo nás kontaktujte na info@novavlna.cz');
+        showError('Odeslání selhalo. Zkuste prosím znovu nebo nás kontaktujte na novavlna@gmail.com');
       }
     });
   })();

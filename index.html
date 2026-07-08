@@ -72,7 +72,7 @@
       list-style: none;
     }
     .nav-links a {
-      font-size: 0.82rem;
+      font-size: 0.9rem;
       font-weight: 500;
       letter-spacing: 0.05em;
       color: var(--navy60);
@@ -80,7 +80,7 @@
     }
     .nav-links a:hover { color: var(--navy); }
     .nav-cta {
-      font-size: 0.82rem !important;
+      font-size: 0.9rem !important;
       font-weight: 700 !important;
       letter-spacing: 0.08em !important;
       color: var(--accent) !important;
@@ -133,7 +133,7 @@
     }
 
     .hero-eyebrow {
-      font-size: 0.72rem;
+      font-size: 0.8rem;
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
@@ -174,7 +174,7 @@
       margin-top: 1.1rem;
     }
     .hero-sub {
-      font-size: clamp(1rem, 1.4vw, 1.15rem);
+      font-size: clamp(1.05rem, 1.5vw, 1.25rem);
       color: var(--navy60);
       max-width: 52ch;
       line-height: 1.75;
@@ -188,7 +188,7 @@
     }
     .btn-dark {
       display: inline-block;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -205,7 +205,7 @@
     }
     .btn-outline {
       display: inline-block;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -280,47 +280,46 @@
       position: relative;
     }
     .quote-band blockquote::before {
-      content: '';
+      content: '~';
       display: block;
-      width: 40px;
-      height: 3px;
-      background: var(--accent);
-      border-radius: 2px;
-      margin-bottom: 2rem;
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: 6.4rem;
+      line-height: 0.55;
+      color: var(--accent);
+      margin-bottom: 2.2rem;
     }
     .quote-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      margin-top: 2.2rem;
-      padding: 13px 34px;
-      font-size: 0.85rem;
+      margin-top: 3rem;
+      padding: 15px 40px;
+      font-size: 0.9rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--cream);
-      border: 1.5px solid rgba(242,239,234,0.25);
+      border: 1.5px solid rgba(201,75,26,0.6);
       border-radius: 999px;
       transition: border-color 0.2s, background 0.2s, transform 0.15s;
     }
     .quote-btn:hover {
       border-color: var(--accent);
-      background: rgba(201,75,26,0.12);
+      background: rgba(201,75,26,0.15);
       transform: translateY(-2px);
     }
     .quote-btn svg {
       width: 13px; height: 13px;
       stroke: currentColor; stroke-width: 2.2;
       fill: none; stroke-linecap: round; stroke-linejoin: round;
-      transition: transform 0.2s;
     }
-    .quote-btn:hover svg { transform: translateX(3px); }
     .quote-source {
-      margin-top: 2rem;
-      font-size: 0.8rem;
+      margin-top: 2.2rem;
+      font-size: 0.875rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(242,239,234,0.3);
+      color: rgba(242,239,234,0.55);
     }
 
     /* ─── PROGRAM ──────────────────────────────────────────── */
@@ -337,12 +336,12 @@
       flex-wrap: wrap;
     }
     .section-label {
-      font-size: 0.72rem;
+      font-size: 0.85rem;
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 0.8rem;
+      margin-bottom: 1.4rem;
     }
     .section-title {
       font-family: var(--roca);
@@ -405,13 +404,19 @@
     .pi-title {
       font-family: var(--roca);
       font-weight: 700;
-      font-size: 1.15rem;
+      font-size: 1.25rem;
       color: var(--navy);
       margin-bottom: 0.6rem;
       line-height: 1.2;
     }
+    .pi-text a.pi-link {
+      color: var(--accent);
+      border-bottom: 1px solid rgba(201,75,26,0.4);
+      transition: border-color 0.2s;
+    }
+    .pi-text a.pi-link:hover { border-color: var(--accent); }
     .pi-text {
-      font-size: 0.88rem;
+      font-size: 1.06rem;
       line-height: 1.7;
       color: var(--navy60);
     }
@@ -427,28 +432,29 @@
       gap: 0;
       white-space: nowrap;
       animation: ticker 28s linear infinite;
+      pointer-events: none;
     }
-    .values-ticker:hover { animation-play-state: paused; }
     .vt-item {
       display: inline-flex;
       align-items: center;
-      gap: 1.5rem;
-      padding: 0 2.5rem;
+      gap: 0;
+      padding: 0;
+      text-transform: lowercase;
       font-family: var(--roca);
       font-weight: 700;
       font-size: clamp(1.1rem, 2vw, 1.5rem);
       color: var(--navy30);
       letter-spacing: 0.02em;
       flex-shrink: 0;
-      transition: color 0.3s;
     }
-    .vt-item:hover { color: var(--navy); }
     .vt-dot {
       width: 5px;
       height: 5px;
-      background: var(--accent);
+      background: currentColor;
       border-radius: 50%;
       flex-shrink: 0;
+      transform: translateY(-0.09em);
+      margin: 0 4.4rem;
     }
     @keyframes ticker {
       from { transform: translateX(0); }
@@ -467,21 +473,24 @@
       align-items: center;
     }
     .section-philosophy .section-label {
-      text-transform: none;
-      font-size: 0.9rem;
-      letter-spacing: 0.04em;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      line-height: 1.6;
+      color: var(--accent);
+      margin-bottom: 1.4rem;
     }
     .phil-left {}
     .phil-left p {
-      font-size: 1.05rem;
+      font-size: 1.125rem;
       line-height: 1.8;
       color: var(--navy60);
       margin-bottom: 1.4rem;
     }
-    .phil-left p:first-of-type {
+    .phil-left p[data-c="phil-text-1"] {
       font-family: var(--roca);
       font-weight: 700;
-      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+      font-size: clamp(1.15rem, 1.8vw, 1.45rem);
       line-height: 1.3;
       color: var(--navy);
     }
@@ -489,7 +498,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -518,7 +527,7 @@
       gap: 1.2rem;
       padding: 1.4rem 0;
       border-bottom: 1px solid rgba(30,36,56,0.12);
-      font-size: 0.95rem;
+      font-size: 1.06rem;
       color: var(--navy);
       line-height: 1.5;
     }
@@ -549,7 +558,7 @@
       pointer-events: none;
     }
     .join-eyebrow {
-      font-size: 0.72rem;
+      font-size: 0.8rem;
       font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -565,7 +574,7 @@
       margin-bottom: 2rem;
     }
     .join-sub {
-      font-size: 1.05rem;
+      font-size: 1.125rem;
       color: rgba(242,239,234,0.5);
       max-width: 46ch;
       line-height: 1.7;
@@ -579,7 +588,7 @@
     }
     .btn-accent {
       display: inline-block;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -596,7 +605,7 @@
     }
     .btn-ghost-light {
       display: inline-block;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -609,6 +618,23 @@
     .btn-ghost-light:hover {
       border-color: rgba(242,239,234,0.6);
       color: var(--cream);
+      transform: translateY(-2px);
+    }
+    .btn-outline-accent {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 15px 40px;
+      border: 1.5px solid rgba(201,75,26,0.6);
+      color: var(--cream);
+      border-radius: 999px;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+    .btn-outline-accent:hover {
+      border-color: var(--accent);
+      background: rgba(201,75,26,0.15);
       transform: translateY(-2px);
     }
 
@@ -628,7 +654,7 @@
       .petition-inner { grid-template-columns: 1fr; gap: 3rem; }
     }
     .petition-text p:not(.section-label) {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: var(--navy60);
       line-height: 1.75;
       margin-top: 1.5rem;
@@ -663,7 +689,7 @@
       padding: 17px 44px !important;
     }
     .petition-note {
-      font-size: 0.78rem;
+      font-size: 1rem;
       color: var(--navy30);
       line-height: 1.65;
       max-width: 36ch;
@@ -693,13 +719,13 @@
       list-style: none;
     }
     .footer-links a {
-      font-size: 0.8rem;
+      font-size: 0.875rem;
       letter-spacing: 0.04em;
       color: var(--navy30);
       transition: color 0.2s;
     }
     .footer-links a:hover { color: var(--navy); }
-    .footer-copy { font-size: 0.75rem; color: var(--navy30); }
+    .footer-copy { font-size: 0.875rem; color: var(--navy30); }
 
     /* ─── SCROLL REVEAL ────────────────────────────────────── */
     .reveal {
@@ -751,9 +777,9 @@
   <nav id="nav">
     <a href="index.html" class="nav-brand">nová<span class="brand-tilde">~</span>vlna</a>
     <ul class="nav-links">
-      <li><a href="#program" data-c="nav-zasady">Zásady</a></li>
-      <li><a href="#o-nas" data-c="nav-o-nas">O&nbsp;nás</a></li>
-      <li><a href="manifest.html" data-c="nav-proc">Proč to děláme?</a></li>
+      <li><a href="#zasady" data-c="nav-zasady">Společnost a stát</a></li>
+      <li><a href="#o-nas" data-c="nav-o-nas">Proč to děláme</a></li>
+      <li><a href="manifest.html" data-c="nav-proc">Manifest</a></li>
       <li><a href="podpis.html" class="nav-cta" data-c="nav-podepsat">Podepsat</a></li>
     </ul>
     <button class="lang-btn" id="lang-btn" onclick="NV_setLang(NV_LANG==='cs'?'en':'cs')" aria-label="Switch language">EN</button>
@@ -810,18 +836,20 @@
       „Nová vlna vychází z&nbsp;přesvědčení, že změna společnosti začíná u&nbsp;každého z&nbsp;nás."
     </blockquote>
     <p class="quote-source reveal reveal-d1" data-c="quote-source">Nová vlna · Manifest osobní odpovědnosti</p>
-    <a href="manifest.html" class="quote-btn reveal reveal-d2">
-      <span data-c="quote-btn">Číst</span>
-      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
+    <div class="reveal reveal-d2">
+      <a href="manifest.html" class="quote-btn">
+        <span data-c="quote-btn">Číst</span>
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
   </section>
 
   <!-- ─── ZÁSADY ───────────────────────────────────────────── -->
   <section class="section-program" id="zasady">
     <div class="section-header">
       <div>
-        <p class="section-label reveal" data-c="zasady-label">Co hájíme</p>
-        <h2 class="section-title reveal reveal-d1" data-c="zasady-title">Zásady<br>manifestu.</h2>
+        <p class="section-label reveal" data-c="zasady-label">Jak vidíme stát</p>
+        <h2 class="section-title reveal reveal-d1" data-c="zasady-title">My tvoříme společnost,<br>společnost definuje stát.</h2>
       </div>
     </div>
 
@@ -831,7 +859,7 @@
         <p class="pi-num">01</p>
         <div class="pi-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h3 class="pi-title" data-c="zasady-0-title">Odpovědnost jako základ</h3>
-        <p class="pi-text" data-c="zasady-0-text">Silný stát nezačíná institucemi. Začíná u&nbsp;lidí. Věříme ve společnost, kde lidé přebírají odpovědnost za svůj život, pravidla platí pro všechny stejně a&nbsp;svoboda jednoho končí tam, kde začíná svoboda druhého.</p>
+        <p class="pi-text" data-c="zasady-0-text">Silný stát nezačíná institucemi. Začíná u&nbsp;lidí. Věříme ve společnost, kde lidé přebírají odpovědnost za svůj život, pravidla platí pro všechny stejně a&nbsp;svoboda jednotlivce končí tam, kde začíná omezovat svobodu druhého — <a href="manifest.html" class="pi-link">manifest osobní odpovědnosti</a>.</p>
       </div>
 
       <div class="program-item reveal reveal-d1">
@@ -851,8 +879,8 @@
       <div class="program-item reveal reveal-d1">
         <p class="pi-num">04</p>
         <div class="pi-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
-        <h3 class="pi-title" data-c="zasady-3-title">Technologie jako nástroj pokroku</h3>
-        <p class="pi-text" data-c="zasady-3-text">Digitalizace je klíčová pro fungující stát. Snižuje byrokracii, zvyšuje efektivitu — a&nbsp;musí být bezpečná.</p>
+        <h3 class="pi-title" data-c="zasady-3-title">Technologie jako nástroj</h3>
+        <p class="pi-text" data-c="zasady-3-text">Chceme kvalitní digitalizaci. Digitalizace je klíčová pro fungující stát. Snižuje byrokracii, zvyšuje efektivitu — a&nbsp;musí být bezpečná. AI a&nbsp;sociální sítě by měly být technologiemi pro společnost, pro efektivní řešení problémů — ne nástrojem kumulace prostředků velkých firem a&nbsp;jednotlivců a&nbsp;ovládání veřejného mínění v&nbsp;jejich zájmu.</p>
       </div>
 
       <div class="program-item reveal">
@@ -924,9 +952,9 @@
     <div class="philosophy-inner">
       <div class="phil-left">
         <p class="section-label reveal" data-c="phil-label">Proč to děláme?</p>
-        <h2 class="section-title reveal reveal-d1" style="margin-bottom:2rem;" data-c="phil-title">Společnost = politika</h2>
+        <h2 class="section-title reveal reveal-d1" style="margin-bottom:2rem;" data-c="phil-title">Je to o&nbsp;nás.</h2>
         <p class="reveal reveal-d2" data-c="phil-text-1">
-          Nová vlna není politická strana. Je to společenský posun. Zde najdeme soubor hodnot a&nbsp;principů, na kterých se jako společnost můžeme shodnout a&nbsp;kterým se může řídit kdokoli, včetně politických stran.
+          Nová vlna není politická strana. Je to společenský posun. Je to soubor hodnot a&nbsp;principů, na kterých se jako společnost můžeme shodnout a&nbsp;kterými se může řídit kdokoli, včetně politických stran.
         </p>
         <p class="reveal reveal-d2" data-c="phil-text-2">
           Jak chápeme pragmatismus? Jsou to hodnoty popisující důvěryhodnou společnost; konzistence a&nbsp;čitelnost vytvářejí prostředí pro partnery. Chceme být odpovědný partner, který nemlží a&nbsp;nepodvádí. Stavíme na občanské společnosti.
@@ -953,8 +981,8 @@
       Nová vlna je rozhodnutí.
     </p>
     <div class="join-actions reveal reveal-d3">
-      <a href="mailto:info@novavlna.cz" class="btn-ghost-light" data-c="join-btn-contact">Kontaktuj nás</a>
-      <a href="manifest.html" class="btn-ghost-light" data-c="join-btn-manifest">Číst manifesty</a>
+      <a href="manifest.html" class="btn-outline-accent" data-c="join-btn-manifest">Manifest</a>
+      <a href="mailto:novavlna@gmail.com" class="btn-ghost-light" data-c="join-btn-contact">Kontaktuj nás</a>
     </div>
   </section>
 
@@ -975,7 +1003,7 @@
           <span class="counter-num">—</span>
           <span class="counter-label">podpisů</span>
         </div>
-        <a href="podpis.html" class="btn-dark petition-btn" data-c="pet-btn">Podepsat manifest</a>
+        <a href="podpis.html" class="btn-accent petition-btn" data-c="pet-btn">Podepsat</a>
         <p class="petition-note" data-c="pet-note">
           Po podpisu obdržíte e-mail s&nbsp;potvrzením a&nbsp;plným textem obou manifestů.
           Data zpracováváme v&nbsp;souladu s&nbsp;GDPR.

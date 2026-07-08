@@ -26,9 +26,9 @@ const CONTENT = {
 
     // ─── NAVIGACE ───────────────────────────────────────────────
     nav: {
-      zasady:   'Zásady',
-      o_nas:    'O&nbsp;nás',
-      proc:     'Proč to děláme?',
+      zasady:   'Společnost a stát',
+      o_nas:    'Proč to děláme',
+      proc:     'Manifest',
       podepsat: 'Podepsat',
     },
 
@@ -49,13 +49,13 @@ const CONTENT = {
 
     // ─── ZÁSADY ─────────────────────────────────────────────────
     zasady: {
-      label:    'Co hájíme',
-      title:    'Zásady<br>manifestu.',
+      label:    'Jak vidíme stát',
+      title:    'My tvoříme společnost,<br>společnost definuje stát.',
       items: [
-        { num: '01', title: 'Odpovědnost jako základ', text: 'Silný stát nezačíná institucemi. Začíná u&nbsp;lidí. Věříme ve společnost, kde lidé přebírají odpovědnost za svůj život, pravidla platí pro všechny stejně a&nbsp;svoboda jednoho končí tam, kde začíná svoboda druhého.' },
+        { num: '01', title: 'Odpovědnost jako základ', text: 'Silný stát nezačíná institucemi. Začíná u&nbsp;lidí. Věříme ve společnost, kde lidé přebírají odpovědnost za svůj život, pravidla platí pro všechny stejně a&nbsp;svoboda jednotlivce končí tam, kde začíná omezovat svobodu druhého — <a href="manifest.html" class="pi-link">manifest osobní odpovědnosti</a>.' },
         { num: '02', title: 'Odbornost místo populismu', text: 'Budoucnost nelze řídit dojmy. Rozhodování musí stát na datech a&nbsp;klíčové role mají zastávat odborníci. Politika je odpovědnost, ne marketing.' },
         { num: '03', title: 'Stát, který funguje', text: 'Chceme stát, který je efektivní, digitální a&nbsp;transparentní. Prosazujeme audit a&nbsp;modernizaci státní správy tak, aby sloužila lidem — ne naopak.' },
-        { num: '04', title: 'Technologie jako nástroj pokroku', text: 'Digitalizace je klíčová pro fungující stát. Snižuje byrokracii, zvyšuje efektivitu — a&nbsp;musí být bezpečná.' },
+        { num: '04', title: 'Technologie jako nástroj', text: 'Chceme kvalitní digitalizaci. Digitalizace je klíčová pro fungující stát. Snižuje byrokracii, zvyšuje efektivitu — a&nbsp;musí být bezpečná. AI a&nbsp;sociální sítě by měly být technologiemi pro společnost, pro efektivní řešení problémů — ne nástrojem kumulace prostředků velkých firem a&nbsp;jednotlivců a&nbsp;ovládání veřejného mínění v&nbsp;jejich zájmu.' },
         { num: '05', title: 'Vzdělání jako základ budoucnosti', text: 'Chceme vzdělávací systém, který rozvíjí kritické myšlení, připravuje na budoucnost a&nbsp;vede k&nbsp;odpovědnosti a&nbsp;iniciativě.' },
         { num: '06', title: 'Zdravá a&nbsp;silná společnost', text: 'Investice do zdraví je investice do budoucnosti. Dostupné zdravotnictví, důraz na prevenci a&nbsp;dlouhodobá udržitelnost systému.' },
         { num: '07', title: 'Energetika bez hazardu', text: 'Energetická bezpečnost je klíčová. Podporujeme obnovitelné zdroje, jadernou energii a&nbsp;vlastní infrastrukturu. Dokud nemáme jistotu plné stability, zůstáváme i&nbsp;u&nbsp;tradičních zdrojů a&nbsp;zajišťujeme plynulý přechod. Modernizujeme bez hazardu.' },
@@ -77,8 +77,8 @@ const CONTENT = {
     // ─── FILOZOFIE ──────────────────────────────────────────────
     philosophy: {
       label:  'Proč to děláme?',
-      title:  'Společnost = politika',
-      text_1: 'Nová vlna není politická strana. Je to společenský posun. Zde najdeme soubor hodnot a&nbsp;principů, na kterých se jako společnost můžeme shodnout a&nbsp;kterým se může řídit kdokoli, včetně politických stran.',
+      title:  'Je to o&nbsp;nás.',
+      text_1: 'Nová vlna není politická strana. Je to společenský posun. Je to soubor hodnot a&nbsp;principů, na kterých se jako společnost můžeme shodnout a&nbsp;kterými se může řídit kdokoli, včetně politických stran.',
       text_2: 'Jak chápeme pragmatismus? Jsou to hodnoty popisující důvěryhodnou společnost; konzistence a&nbsp;čitelnost vytvářejí prostředí pro partnery. Chceme být odpovědný partner, který nemlží a&nbsp;nepodvádí. Stavíme na občanské společnosti.',
       text_3: 'Jde o&nbsp;zdraví společnosti. Bereme odpovědnost do vlastních rukou, rosteme krůček po krůčku — pět procent ročně je udržitelnější než rychlá změna, která vyvolá protitlak. Vymezujeme se proti populismu. Je pro nás důležitý dlouhodobý pokrok, ne krátkodobý zisk.',
       link:   'Číst Manifest osobní odpovědnosti',
@@ -87,7 +87,7 @@ const CONTENT = {
         'Odvaha je důležitější než jistota',
         'Spolupráce je silnější než izolace',
         'Technologie mají sloužit lidem',
-        'Svoboda bez odpovědnosti je prázdná',
+        'Svoboda bez zodpovědnosti je prázdná',
         'Tvoříme místo stěžování',
         'Jednáme místo čekání',
       ],
@@ -99,7 +99,7 @@ const CONTENT = {
       title:        'Přidej se<br>k&nbsp;vlně.',
       subtitle:     'Budoucnost vzniká rozhodnutími, která děláme dnes. Nová vlna je rozhodnutí.',
       btn_contact:  'Kontaktuj nás',
-      btn_manifest: 'Číst manifesty',
+      btn_manifest: 'Manifest',
     },
 
     // ─── PETICE (SEKCE NA HLAVNÍ STRÁNCE) ───────────────────────
@@ -107,7 +107,7 @@ const CONTENT = {
       label:         'Podepište manifest',
       title:         'Souhlasíte?<br>Podepište.',
       text:          'Pokud sdílíte přesvědčení, že změna společnosti začíná u&nbsp;každého z&nbsp;nás — podepište tento manifest. Váš podpis není závazkem k&nbsp;politické straně. Je prohlášením osobní odpovědnosti.',
-      btn:           'Podepsat manifest',
+      btn:           'Podepsat',
       note:          'Po podpisu obdržíte e-mail s&nbsp;potvrzením a&nbsp;plným textem obou manifestů. Data zpracováváme v&nbsp;souladu s&nbsp;GDPR.',
       counter_label: 'podpisů',
     },
@@ -125,7 +125,7 @@ const CONTENT = {
           paragraphs: [
             'Každá generace přebírá svět takový, jaký je. A&nbsp;každá generace má možnost ho proměnit.',
             'Svět, ve kterém žijeme, je výsledkem rozhodnutí lidí před námi. Svět, ve kterém budou žít další generace, bude výsledkem rozhodnutí nás.',
-            'Proto přijímáme osobní odpovědnost. Odpovědnost za svůj život. Za své činy. Za své projekty. Za dopad, který máme na ostatní.',
+            'Proto přijímáme osobní zodpovědnost. Zodpovědnost za svůj život. Za své činy. Za své projekty. Za dopad, který máme na ostatní.',
           ],
         },
         {
@@ -153,7 +153,7 @@ const CONTENT = {
           paragraphs: [
             'Rozhodnutí přestat čekat. Rozhodnutí začít jednat. Rozhodnutí nést důsledky.',
             'Nečekáme, až problémy vyřeší někdo jiný. Pokud něco nefunguje, snažíme se to zlepšit. Pokud něco chybí, snažíme se to vytvořit. Pokud uděláme chybu, přijímáme její důsledky a&nbsp;učíme se.',
-            'Věříme, že svoboda a&nbsp;odpovědnost patří k&nbsp;sobě. Bez odpovědnosti je svoboda prázdná. Bez svobody ztrácí odpovědnost smysl.',
+            'Věříme, že svoboda a&nbsp;zodpovědnost patří k&nbsp;sobě. Bez zodpovědnosti je svoboda prázdná. Bez svobody ztrácí zodpovědnost smysl.',
           ],
           actions: [
             'Tvoříme místo stěžování',
@@ -162,36 +162,40 @@ const CONTENT = {
             'Hledáme řešení místo výmluv',
           ],
           epilogue: [
-            'Nejsme pasivní pozorovatelé světa. Jsme lidé, kteří se rozhodli tvořit. Tvořit věci. Tvořit komunity. Tvořit společnost. A&nbsp;nést za ni odpovědnost.',
+            'Nejsme pasivní pozorovatelé světa.',
+            'Jsme lidé, kteří se rozhodli tvořit.',
+            'Tvořit věci. Tvořit komunity. Tvořit společnost.',
+            'A&nbsp;nést za to vše odpovědnost.',
           ],
-          closing: 'Svoboda začíná tam, kde přijímáme odpovědnost.',
         },
       ],
       sidebar_label: 'Odkud vychází nová vlna',
-      sidebar_text:  'Tento manifest stojí v&nbsp;základech hnutí. Než jsme formulovali program, formulovali jsme hodnoty.',
+      sidebar_text:  'Tento manifest je základem Nové vlny. Začínáme sami u&nbsp;sebe, všímáme si svého okolí a&nbsp;našeho vlivu na něj.',
       sidebar_link:  'Zpět na hlavní stránku',
       sidebar_quote: '„Nová vlna vychází z&nbsp;přesvědčení, že změna společnosti začíná u&nbsp;každého z&nbsp;nás."',
-      cta_title:     'Jsi jedním z&nbsp;nás.<br>Přidej se k&nbsp;vlně.',
-      cta_btn:       'Přidej se',
+      cta_title:     'Svoboda začíná tam, kde přijímáme zodpovědnost.',
+      cta_btn:       'Podepsat manifest',
     },
 
     // ─── STRÁNKA PODPISU ────────────────────────────────────────
     petition_page: {
-      title:         'Politický manifest<br>nová~vlna',
-      intro:         'Svým podpisem vyjadřujete souhlas s&nbsp;hodnotami a&nbsp;principy, které jsou základem tohoto manifestu. Není to závazek k&nbsp;politické straně. Je to prohlášení osobní odpovědnosti.',
+      title:         'Politický manifest<br>nová<span class="brand-tilde">~</span>vlna',
+      intro:         'Svým podpisem vyjadřujete souhlas s&nbsp;hodnotami a&nbsp;principy, které jsou základem tohoto manifestu. Není to závazek k&nbsp;politické straně. Je to prohlášení osobní odpovědnosti a&nbsp;souhlas s&nbsp;obsahem stránky.',
       excerpt_label: 'Klíčové body manifestu',
       excerpt_items: [
         { bold: 'Odpovědnost jako základ.',            text: 'Silný stát nezačíná institucemi. Začíná u&nbsp;lidí. Pravidla platí pro všechny stejně.' },
         { bold: 'Odbornost místo populismu.',          text: 'Rozhodování na datech. Politika je odpovědnost, ne marketing.' },
         { bold: 'Stát, který funguje.',                text: 'Efektivní, digitální, transparentní. Slouží lidem — ne naopak.' },
-        { bold: 'Svoboda a&nbsp;odpovědnost patří k&nbsp;sobě.',text: 'Tvoříme místo stěžování. Jednáme místo čekání.' },
+        { bold: 'Svoboda a&nbsp;zodpovědnost patří k&nbsp;sobě.',text: 'Tvoříme místo stěžování. Jednáme místo čekání.' },
       ],
       link_manifest: 'Manifest osobní odpovědnosti →',
-      link_zasady:   'Zásady manifestu →',
+      link_zasady:   'Jak vidíme stát →',
       form_title:    'Podepsat manifest',
       form_subtitle: 'Vyplňte jméno a&nbsp;e-mail. Po odeslání dostanete potvrzení s&nbsp;plným textem obou manifestů.',
-      label_name:    'Jméno a&nbsp;příjmení',
+      label_name:    'Jméno a příjmení',
+      label_nationality: 'Státní příslušnost',
       label_email:   'E-mailová adresa',
+      news_text:     'Souhlasím se zasíláním informativních e-mailů o&nbsp;Nové vlně. Souhlas mohu kdykoli odvolat.',
       btn_submit:    'Podepsat manifest',
       counter_label: 'lidí již podepsalo',
       success_title: 'podpis přijat.',
@@ -219,9 +223,9 @@ const CONTENT = {
 
     // ─── NAVIGATION ─────────────────────────────────────────────
     nav: {
-      zasady:   'Principles',
-      o_nas:    'About',
-      proc:     'Why we do it?',
+      zasady:   'Society and the state',
+      o_nas:    'Why we do it',
+      proc:     'Manifesto',
       podepsat: 'Sign',
     },
 
@@ -242,13 +246,13 @@ const CONTENT = {
 
     // ─── PRINCIPLES ─────────────────────────────────────────────
     zasady: {
-      label:    'What we stand for',
-      title:    'Manifesto<br>principles.',
+      label:    'How we see the state',
+      title:    'We create society,<br>society defines the state.',
       items: [
-        { num: '01', title: 'Responsibility as foundation', text: 'A strong state does not begin with institutions. It begins with people. We believe in a society where people take responsibility for their lives, rules apply equally to everyone, and one person\'s freedom ends where another\'s begins.' },
+        { num: '01', title: 'Responsibility as foundation', text: 'A strong state does not begin with institutions. It begins with people. We believe in a society where people take responsibility for their lives, rules apply equally to everyone, and an individual\'s freedom ends where it begins to limit the freedom of another — <a href="manifest.html" class="pi-link">the Manifesto of Personal Responsibility</a>.' },
         { num: '02', title: 'Expertise over populism', text: 'The future cannot be governed by impressions. Decisions must be based on data and key roles must be held by experts. Politics is responsibility, not marketing.' },
         { num: '03', title: 'A state that works', text: 'We want a state that is efficient, digital, and transparent. We push for an audit and modernisation of public administration so that it serves people — not the other way around.' },
-        { num: '04', title: 'Technology as a tool of progress', text: 'Digitalisation is essential for a functioning state. It reduces bureaucracy, increases efficiency — and it must be secure.' },
+        { num: '04', title: 'Technology as a tool', text: 'We want high-quality digitalisation. Digitalisation is essential for a functioning state. It reduces bureaucracy, increases efficiency — and it must be secure. AI and social networks should be technologies for society, for solving problems effectively — not tools for large companies and individuals to accumulate wealth and steer public opinion in their own interest.' },
         { num: '05', title: 'Education as the foundation of tomorrow', text: 'We want an education system that develops critical thinking, prepares people for the future, and fosters responsibility and initiative.' },
         { num: '06', title: 'A healthy and strong society', text: 'Investing in health is investing in the future. Accessible healthcare, an emphasis on prevention, and long-term sustainability of the system.' },
         { num: '07', title: 'Energy without gambling', text: 'Energy security is essential. We support renewable sources, nuclear energy, and our own infrastructure. Until full stability is guaranteed, we also keep traditional sources and ensure a smooth transition. We modernise without gambling.' },
@@ -270,8 +274,8 @@ const CONTENT = {
     // ─── PHILOSOPHY ─────────────────────────────────────────────
     philosophy: {
       label:  'Why we do it?',
-      title:  'Society = politics',
-      text_1: 'Nová vlna is not a political party. It is a social shift. Here you will find a set of values and principles we can agree on as a society — ones that anyone can follow, including political parties.',
+      title:  'It\'s about us.',
+      text_1: 'Nová vlna is not a political party. It is a social shift. It is a set of values and principles we can agree on as a society — ones that anyone can follow, including political parties.',
       text_2: 'How do we understand pragmatism? Values that describe a trustworthy society; consistency and readability create an environment for partners. We want to be a responsible partner who does not bluff and does not cheat. We build on civil society.',
       text_3: 'It is about the health of society. We take responsibility into our own hands and grow step by step — five percent a year is more sustainable than rapid change that provokes a backlash. We stand against populism. What matters to us is long-term progress, not short-term gain.',
       link:   'Read the Manifesto of Personal Responsibility',
@@ -292,7 +296,7 @@ const CONTENT = {
       title:        'Join<br>the wave.',
       subtitle:     'The future is shaped by decisions we make today. Nová vlna is a decision.',
       btn_contact:  'Contact us',
-      btn_manifest: 'Read the manifestos',
+      btn_manifest: 'Manifest',
     },
 
     // ─── PETITION (HOMEPAGE SECTION) ────────────────────────────
@@ -300,7 +304,7 @@ const CONTENT = {
       label:         'Sign the manifesto',
       title:         'Do you agree?<br>Sign.',
       text:          'If you share the belief that social change begins with each of us — sign this manifesto. Your signature is not a commitment to a political party. It is a declaration of personal responsibility.',
-      btn:           'Sign the manifesto',
+      btn:           'Sign',
       note:          'After signing, you will receive a confirmation email with the full text of both manifestos. Data processed in accordance with GDPR.',
       counter_label: 'signatures',
     },
@@ -355,23 +359,25 @@ const CONTENT = {
             'We seek solutions instead of excuses',
           ],
           epilogue: [
-            'We are not passive observers of the world. We are people who have decided to create. To create things. To create communities. To create society. And to bear responsibility for it.',
+            'We are not passive observers of the world.',
+            'We are people who have decided to create.',
+            'To create things. To create communities. To create society.',
+            'And to bear responsibility for all of it.',
           ],
-          closing: 'Freedom begins where we accept responsibility.',
         },
       ],
       sidebar_label: 'Where Nová vlna comes from',
-      sidebar_text:  'This manifesto is the foundation of the movement. Before we formulated a programme, we formulated our values.',
+      sidebar_text:  'This manifesto is the foundation of Nová vlna. We start with ourselves, paying attention to our surroundings and the impact we have on them.',
       sidebar_link:  'Back to main page',
       sidebar_quote: '"Nová vlna stems from the belief that social change begins with each of us."',
-      cta_title:     'You are one of us.<br>Join the wave.',
-      cta_btn:       'Join us',
+      cta_title:     'Freedom begins where we accept responsibility.',
+      cta_btn:       'Sign the manifesto',
     },
 
     // ─── PETITION PAGE ──────────────────────────────────────────
     petition_page: {
-      title:         'Political Manifesto<br>nová~vlna',
-      intro:         'By signing, you express agreement with the values and principles that form the foundation of this manifesto. It is not a commitment to a political party. It is a declaration of personal responsibility.',
+      title:         'Political Manifesto<br>nová<span class="brand-tilde">~</span>vlna',
+      intro:         'By signing, you express agreement with the values and principles that form the foundation of this manifesto. It is not a commitment to a political party. It is a declaration of personal responsibility and agreement with the content of this page.',
       excerpt_label: 'Key points of the manifesto',
       excerpt_items: [
         { bold: 'Responsibility as foundation.',           text: 'A strong state does not begin with institutions. It begins with people. Rules apply equally to all.' },
@@ -380,11 +386,13 @@ const CONTENT = {
         { bold: 'Freedom and responsibility belong together.', text: 'We create instead of complaining. We act instead of waiting.' },
       ],
       link_manifest: 'Manifesto of Personal Responsibility →',
-      link_zasady:   'Manifesto principles →',
+      link_zasady:   'How we see the state →',
       form_title:    'Sign the manifesto',
       form_subtitle: 'Enter your name and email. After submitting you will receive a confirmation with the full text of both manifestos.',
       label_name:    'Full name',
+      label_nationality: 'Nationality',
       label_email:   'Email address',
+      news_text:     'I agree to receive informational emails about Nová vlna. I can withdraw this consent at any time.',
       btn_submit:    'Sign the manifesto',
       counter_label: 'people have already signed',
       success_title: 'signature received.',
@@ -536,8 +544,8 @@ function _render() {
         const vals    = ch.values
           ? `<ul class="reveal">${ch.values.map(v => `<li>${v}</li>`).join('')}</ul>` : '';
         const actions = ch.actions
-          ? `<div class="action-box reveal"><ul>${ch.actions.map(a => `<li>${a}</li>`).join('')}</ul></div>` : '';
-        const epilogue = (ch.epilogue || []).map(p => `<p class="reveal">${p}</p>`).join('');
+          ? `<ul class="reveal">${ch.actions.map(a => `<li>${a}</li>`).join('')}</ul>` : '';
+        const epilogue = (ch.epilogue || []).map(p => `<p class="reveal epilogue">${p}</p>`).join('');
         const closing = ch.closing ? `<div class="closing reveal"><p>${ch.closing}</p></div>` : '';
         const intro   = ch.intro   ? `<p class="reveal">${ch.intro}</p>` : '';
         const outro   = ch.outro   ? `<p class="reveal">${ch.outro}</p>` : '';
@@ -579,6 +587,10 @@ function _render() {
     _set('[data-c="p-form-subtitle"]', P.form_subtitle);
     _txt('[data-c="p-label-name"]',    P.label_name);
     _txt('[data-c="p-label-email"]',   P.label_email);
+    _txt('[data-c="p-label-nationality"]', P.label_nationality);
+    _set('[data-c="p-news-text"]',     P.news_text);
+    _set('[data-c="p-link-manifest"]', P.link_manifest);
+    _set('[data-c="p-link-zasady"]',   P.link_zasady);
     _set('[data-c="p-btn-submit"]',    P.btn_submit);
     _set('[data-c="p-counter-label"]', P.counter_label);
     _set('[data-c="p-success-title"]', P.success_title);

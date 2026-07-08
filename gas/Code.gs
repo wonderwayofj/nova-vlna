@@ -33,7 +33,7 @@ function doGet(e) {
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
-    const { name, email, gdpr, ts } = data;
+    const { name, email, nationality, newsletter, gdpr, ts } = data;
 
     // ── Uložit do Sheets ──────────────────────────────────
     const ss    = SpreadsheetApp.openById(SHEET_ID);
@@ -41,15 +41,17 @@ function doPost(e) {
 
     if (!sheet) {
       sheet = ss.insertSheet(SHEET_NAME);
-      sheet.appendRow(['Časové razítko', 'Jméno', 'E-mail', 'GDPR souhlas']);
-      sheet.getRange(1, 1, 1, 4).setFontWeight('bold');
+      sheet.appendRow(['Časové razítko', 'Jméno', 'E-mail', 'Státní příslušnost', 'GDPR souhlas', 'Newsletter']);
+      sheet.getRange(1, 1, 1, 6).setFontWeight('bold');
     }
 
     sheet.appendRow([
       new Date(ts || Date.now()),
       name,
       email,
-      gdpr ? 'ANO' : 'NE'
+      nationality || '',
+      gdpr ? 'ANO' : 'NE',
+      newsletter ? 'ANO' : 'NE'
     ]);
 
     // ── Odeslat potvrzovací e-mail ────────────────────────
