@@ -176,7 +176,7 @@
     .hero-sub {
       font-size: clamp(1.05rem, 1.5vw, 1.25rem);
       color: var(--navy60);
-      max-width: 52ch;
+      max-width: 66ch;
       line-height: 1.75;
       margin-bottom: 3rem;
     }
@@ -542,6 +542,56 @@
       line-height: 1;
     }
 
+    /* ─── SIGNATÁŘI ────────────────────────────────────────── */
+    .section-signatories {
+      background: var(--white);
+      padding: 7rem 10vw;
+      border-top: 1px solid var(--sand);
+    }
+    .sig-text {
+      max-width: 62ch;
+      font-size: 1.06rem;
+      line-height: 1.75;
+      color: var(--navy60);
+      margin-top: 0.5rem;
+    }
+    .sig-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 900px) { .sig-grid { grid-template-columns: 1fr; } }
+    .sig-card {
+      border: 1px solid var(--sand);
+      border-radius: 10px;
+      padding: 2rem;
+      background: var(--cream);
+    }
+    .sig-photo {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    .sig-name {
+      font-family: var(--roca);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--navy);
+    }
+    .sig-role {
+      font-size: 0.85rem;
+      color: var(--navy60);
+      margin-top: 0.2rem;
+    }
+    .sig-quote {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--navy60);
+      margin-top: 1rem;
+    }
+
     /* ─── JOIN ─────────────────────────────────────────────── */
     .section-join {
       background: var(--navy);
@@ -575,8 +625,8 @@
     }
     .join-sub {
       font-size: 1.125rem;
-      color: rgba(242,239,234,0.5);
-      max-width: 46ch;
+      color: rgba(242,239,234,0.55);
+      max-width: 64ch;
       line-height: 1.7;
       margin: 0 auto 3rem;
     }
@@ -636,6 +686,24 @@
       border-color: var(--accent);
       background: rgba(201,75,26,0.15);
       transform: translateY(-2px);
+    }
+
+    .join-scroll {
+      margin-top: 4rem;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(242,239,234,0.45);
+      transition: color 0.2s;
+    }
+    .join-scroll:hover { color: var(--cream); }
+    .join-scroll-line {
+      background: linear-gradient(to bottom, rgba(242,239,234,0.6), transparent);
     }
 
     /* ─── PETITION ─────────────────────────────────────────── */
@@ -922,7 +990,7 @@
         <p class="pi-num">10</p>
         <div class="pi-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg></div>
         <h3 class="pi-title" data-c="zasady-9-title">Strategická nezávislost</h3>
-        <p class="pi-text" data-c="zasady-9-text">Nezávislost znamená připravenost. Vlastní zdroje, záložní řešení, odolnost proti výpadkům. Když přijde krize, stát funguje.</p>
+        <p class="pi-text" data-c="zasady-9-text">Nezávislost znamená připravenost. Vlastní zdroje, záložní řešení, odolnost proti výpadkům. Klíčovou roli hraje energetika — snížení závislosti na dovozu fosilních paliv z&nbsp;nás dělá společnost méně závislou na ostatních mocnostech a&nbsp;méně vydíratelnou. Když přijde krize, stát funguje.</p>
       </div>
 
       <div class="program-item reveal">
@@ -962,6 +1030,7 @@
         <p class="reveal reveal-d2" data-c="phil-text-3">
           Jde o&nbsp;zdraví společnosti. Bereme odpovědnost do vlastních rukou, rosteme krůček po krůčku — pět procent ročně je udržitelnější než rychlá změna, která vyvolá protitlak. Vymezujeme se proti populismu. Je pro nás důležitý dlouhodobý pokrok, ne krátkodobý zisk.
         </p>
+        <p class="reveal reveal-d2" data-c="phil-text-4">Nehledáme shodu všech. Hledáme shodu těch, kteří věří v&nbsp;odpovědnost, právní stát, bezpečnost a&nbsp;schopnost České republiky obstát v&nbsp;měnícím se světě.</p>
         <a href="manifest.html" class="phil-link reveal reveal-d3">
           <span data-c="phil-link">Číst Manifest osobní odpovědnosti</span>
           <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -970,6 +1039,15 @@
       <div class="phil-right reveal reveal-d2" data-c="phil-values">
       </div>
     </div>
+  </section>
+
+  <!-- ─── PRVNÍ SIGNATÁŘI ──────────────────────────────────── -->
+  <!-- Sekce zatím skrytá — až budou první signatáři, smažte style="display:none" a doplňte jména do content.js → signatories.items -->
+  <section class="section-signatories" id="signatari" style="display:none">
+    <p class="section-label reveal" data-c="sig-label">První signatáři</p>
+    <h2 class="section-title reveal reveal-d1" data-c="sig-title">Lidé, které spojuje<br>odpovědnost.</h2>
+    <p class="sig-text reveal reveal-d2" data-c="sig-text">Nová vlna vzniká jako otevřený občansko-politický koncept. První signatáři budou postupně doplňováni.</p>
+    <div class="sig-grid" data-c="sig-items" style="display:none"></div>
   </section>
 
   <!-- ─── JOIN ─────────────────────────────────────────────── -->
@@ -982,12 +1060,16 @@
     </p>
     <div class="join-actions reveal reveal-d3">
       <a href="manifest.html" class="btn-outline-accent" data-c="join-btn-manifest">Manifest</a>
-      <a href="mailto:novavlna@gmail.com" class="btn-ghost-light" data-c="join-btn-contact">Kontaktuj nás</a>
+      <a href="mailto:jsmenovavlna@gmail.com" class="btn-ghost-light" data-c="join-btn-contact">Kontaktujte nás</a>
     </div>
+    <a href="#podepsat" class="join-scroll reveal reveal-d4">
+      <span data-c="join-btn-sign">Podepsat</span>
+      <div class="scroll-line join-scroll-line"></div>
+    </a>
   </section>
 
   <!-- ─── PETITION ─────────────────────────────────────────── -->
-  <section class="section-petition">
+  <section class="section-petition" id="podepsat">
     <div class="petition-inner">
       <div class="petition-text reveal">
         <p class="section-label" data-c="pet-label">Podepište manifest</p>

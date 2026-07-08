@@ -374,7 +374,64 @@
 
         <div class="field">
           <label for="f-nationality"><span data-c="p-label-nationality">Státní příslušnost</span> *</label>
-          <input type="text" id="f-nationality" name="nationality" placeholder="Česká republika" required autocomplete="country-name" />
+          <input type="text" id="f-nationality" name="nationality" placeholder="Začněte psát…" required autocomplete="country-name" list="country-list" />
+          <datalist id="country-list">
+            <option value="Česká republika"></option>
+            <option value="Slovensko"></option>
+            <option value="Německo"></option>
+            <option value="Rakousko"></option>
+            <option value="Polsko"></option>
+            <option value="Ukrajina"></option>
+            <option value="Maďarsko"></option>
+            <option value="Francie"></option>
+            <option value="Itálie"></option>
+            <option value="Španělsko"></option>
+            <option value="Portugalsko"></option>
+            <option value="Nizozemsko"></option>
+            <option value="Belgie"></option>
+            <option value="Lucembursko"></option>
+            <option value="Švýcarsko"></option>
+            <option value="Velká Británie"></option>
+            <option value="Irsko"></option>
+            <option value="Dánsko"></option>
+            <option value="Švédsko"></option>
+            <option value="Norsko"></option>
+            <option value="Finsko"></option>
+            <option value="Island"></option>
+            <option value="Estonsko"></option>
+            <option value="Lotyšsko"></option>
+            <option value="Litva"></option>
+            <option value="Slovinsko"></option>
+            <option value="Chorvatsko"></option>
+            <option value="Srbsko"></option>
+            <option value="Rumunsko"></option>
+            <option value="Bulharsko"></option>
+            <option value="Řecko"></option>
+            <option value="Turecko"></option>
+            <option value="Spojené státy americké"></option>
+            <option value="Kanada"></option>
+            <option value="Austrálie"></option>
+            <option value="Nový Zéland"></option>
+            <option value="Japonsko"></option>
+            <option value="Jižní Korea"></option>
+            <option value="Vietnam"></option>
+            <option value="Čína"></option>
+            <option value="Indie"></option>
+            <option value="Izrael"></option>
+            <option value="Brazílie"></option>
+            <option value="Argentina"></option>
+            <option value="Mexiko"></option>
+            <option value="Jihoafrická republika"></option>
+            <option value="Gruzie"></option>
+            <option value="Moldavsko"></option>
+            <option value="Bělorusko"></option>
+            <option value="Rusko"></option>
+          </datalist>
+        </div>
+
+        <div class="field">
+          <label for="f-profession"><span data-c="p-label-profession">Povolání</span></label>
+          <input type="text" id="f-profession" name="profession" placeholder="např. učitelka, student, důchodce" autocomplete="organization-title" />
         </div>
 
         <div class="gdpr-field">
@@ -385,7 +442,7 @@
               podpisů manifestu nová~vlna a&nbsp;zaslání potvrzovacího e-mailu.
               Data jsou uchovávána po dobu trvání projektu a&nbsp;nejsou předávána třetím stranám.
               Souhlas mohu kdykoli odvolat na
-              <a href="mailto:gdpr@novavlna.cz">gdpr@novavlna.cz</a>.
+              <a href="mailto:jsmenovavlna@gmail.com">jsmenovavlna@gmail.com</a>.
               Více informací o&nbsp;zpracování dat naleznete v
               <a href="#gdpr-info">zásadách ochrany osobních údajů</a>.
             </span>
@@ -428,12 +485,12 @@
       <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;">Ochrana osobních údajů</p>
       <h2 style="font-family:var(--roca);font-weight:700;font-size:1.8rem;color:var(--navy);margin-bottom:1.5rem;line-height:1.1;">zásady zpracování dat</h2>
       <div style="font-size:0.92rem;line-height:1.8;color:var(--navy60);display:flex;flex-direction:column;gap:1rem;">
-        <p><strong style="color:var(--navy);">Správce údajů:</strong> nová~vlna, kontakt: gdpr@novavlna.cz</p>
+        <p><strong style="color:var(--navy);">Správce údajů:</strong> nová~vlna, kontakt: jsmenovavlna@gmail.com</p>
         <p><strong style="color:var(--navy);">Jaká data sbíráme:</strong> Jméno, příjmení a&nbsp;e-mailová adresa.</p>
         <p><strong style="color:var(--navy);">Účel zpracování:</strong> Evidence podpisů manifestu a&nbsp;zaslání potvrzovacího e-mailu s&nbsp;obsahem podepsaného dokumentu.</p>
         <p><strong style="color:var(--navy);">Právní základ:</strong> Váš výslovný souhlas (GDPR čl. 6 odst. 1 písm. a).</p>
         <p><strong style="color:var(--navy);">Doba uchování:</strong> Po dobu trvání projektu nová~vlna, nebo do odvolání souhlasu.</p>
-        <p><strong style="color:var(--navy);">Vaše práva:</strong> Právo na přístup, opravu, výmaz, přenositelnost a&nbsp;odvolání souhlasu. Kontaktujte nás na gdpr@novavlna.cz</p>
+        <p><strong style="color:var(--navy);">Vaše práva:</strong> Právo na přístup, opravu, výmaz, přenositelnost a&nbsp;odvolání souhlasu. Kontaktujte nás na jsmenovavlna@gmail.com</p>
         <p><strong style="color:var(--navy);">Příjemci:</strong> Data nejsou předávána třetím stranám. Ukládána jsou v&nbsp;Google Workspace.</p>
       </div>
     </div>
@@ -441,7 +498,7 @@
 
   <footer>
     <span class="footer-brand">nová<span class="brand-tilde">~</span>vlna</span>
-    <p class="footer-copy" data-c="footer-copyright">© 2026 Nová vlna · <a href="mailto:gdpr@novavlna.cz" style="color:inherit;">gdpr@novavlna.cz</a></p>
+    <p class="footer-copy" data-c="footer-copyright">© 2026 Nová vlna · <a href="mailto:jsmenovavlna@gmail.com" style="color:inherit;">jsmenovavlna@gmail.com</a></p>
   </footer>
 
   <script src="content.js"></script>
@@ -449,7 +506,7 @@
   (() => {
     // ── CONFIG ─────────────────────────────────────────────
     // Po nasazení Google Apps Script vložte URL sem:
-    const GAS_URL = 'https://script.google.com/macros/s/VASE_GAS_URL/exec';
+    const GAS_URL = 'https://script.google.com/macros/s/AKfycbyPA6eNIv2yuSKVkcxLFXqv7ws1yjL6KQ77jB5VdW6lZkvZMwPo0mMr44a4VYqJPMpb/exec';
 
     // ── COUNTER ────────────────────────────────────────────
     async function loadCount() {
@@ -484,6 +541,7 @@
       const name  = document.getElementById('f-name').value.trim();
       const email = document.getElementById('f-email').value.trim();
       const nationality = document.getElementById('f-nationality').value.trim();
+      const profession  = document.getElementById('f-profession').value.trim();
       const newsletter  = document.getElementById('f-news').checked;
       const gdpr  = document.getElementById('f-gdpr').checked;
 
@@ -501,7 +559,7 @@
           method: 'POST',
           mode: 'no-cors',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, nationality, newsletter, gdpr: true, ts: new Date().toISOString() })
+          body: JSON.stringify({ name, email, nationality, profession, newsletter, gdpr: true, ts: new Date().toISOString() })
         });
 
         // no-cors → opaque response, assume success
@@ -514,7 +572,7 @@
       } catch(err) {
         btn.disabled = false;
         btn.classList.remove('loading');
-        showError('Odeslání selhalo. Zkuste prosím znovu nebo nás kontaktujte na novavlna@gmail.com');
+        showError('Odeslání selhalo. Zkuste prosím znovu nebo nás kontaktujte na jsmenovavlna@gmail.com');
       }
     });
   })();

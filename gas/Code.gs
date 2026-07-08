@@ -14,8 +14,8 @@
 const SHEET_ID    = 'VASE_SPREADSHEET_ID';   // ID Google tabulky
 const SHEET_NAME  = 'Podpisy';               // Název listu
 const FROM_NAME   = 'nová~vlna';
-const FROM_EMAIL  = 'info@novavlna.cz';      // Gmail adresa odesílatele
-const SITE_URL    = 'https://novavlna.cz';   // URL vašeho webu
+const FROM_EMAIL  = 'jsmenovavlna@gmail.com'; // Gmail adresa odesílatele
+const SITE_URL    = 'https://wonderwayofj.github.io/nova-vlna'; // URL vašeho webu
 // ─────────────────────────────────────────────────────────────
 
 function doGet(e) {
@@ -33,7 +33,7 @@ function doGet(e) {
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
-    const { name, email, nationality, newsletter, gdpr, ts } = data;
+    const { name, email, nationality, profession, newsletter, gdpr, ts } = data;
 
     // ── Uložit do Sheets ──────────────────────────────────
     const ss    = SpreadsheetApp.openById(SHEET_ID);
@@ -41,8 +41,8 @@ function doPost(e) {
 
     if (!sheet) {
       sheet = ss.insertSheet(SHEET_NAME);
-      sheet.appendRow(['Časové razítko', 'Jméno', 'E-mail', 'Státní příslušnost', 'GDPR souhlas', 'Newsletter']);
-      sheet.getRange(1, 1, 1, 6).setFontWeight('bold');
+      sheet.appendRow(['Časové razítko', 'Jméno', 'E-mail', 'Státní příslušnost', 'Povolání', 'GDPR souhlas', 'Newsletter']);
+      sheet.getRange(1, 1, 1, 7).setFontWeight('bold');
     }
 
     sheet.appendRow([
@@ -50,6 +50,7 @@ function doPost(e) {
       name,
       email,
       nationality || '',
+      profession || '',
       gdpr ? 'ANO' : 'NE',
       newsletter ? 'ANO' : 'NE'
     ]);
@@ -173,7 +174,7 @@ function buildEmailHtml(name) {
               Tento e-mail byl odeslán, protože jste podepsali manifest nová~vlna
               na adrese ${SITE_URL}.<br>
               Vaše data zpracováváme v souladu s GDPR. Souhlas lze odvolat na
-              <a href="mailto:gdpr@novavlna.cz" style="color:#C94B1A;">gdpr@novavlna.cz</a>.
+              <a href="mailto:jsmenovavlna@gmail.com" style="color:#C94B1A;">jsmenovavlna@gmail.com</a>.
             </p>
 
           </td>
@@ -184,7 +185,7 @@ function buildEmailHtml(name) {
           <td style="background:#E8E2D4;padding:24px 48px;border-radius:0 0 12px 12px;
                      text-align:center;">
             <p style="margin:0;font-size:11px;color:rgba(30,36,56,0.4);letter-spacing:0.04em;">
-              © 2026 nová~vlna · <a href="mailto:info@novavlna.cz" style="color:inherit;">info@novavlna.cz</a>
+              © 2026 nová~vlna · <a href="mailto:jsmenovavlna@gmail.com" style="color:inherit;">jsmenovavlna@gmail.com</a>
             </p>
           </td>
         </tr>
