@@ -98,7 +98,7 @@ const CONTENT = {
     join: {
       label:        'Připojte se',
       title:        'Připojte se<br>k&nbsp;Nové vlně.',
-      subtitle:     'Budoucnost nevzniká sama. Vzniká rozhodnutími, která děláme dnes. Pokud věříte, že Česká republika může být odpovědnější, funkčnější, bezpečnější a&nbsp;sebevědomější země, připojte se k&nbsp;Manifestu Nové vlny.<br><br>Nejde o&nbsp;vstup do politické strany — jde o&nbsp;přihlášení se k&nbsp;hodnotám, na kterých může stát silnější společnost.',
+      subtitle:     'Budoucnost nevzniká sama. Vzniká rozhodnutími, která děláme dnes. Pokud věříte, že Česká republika může být odpovědnější, funkčnější, bezpečnější a&nbsp;sebevědomější země, připojte se k&nbsp;Manifestu Nové vlny.<br><br>Jde o&nbsp;přihlášení se k&nbsp;hodnotám, na kterých může stát silnější společnost.',
       btn_contact:  'Kontaktujte nás',
       btn_sign:     'Podepsat',
       btn_manifest: 'Manifest',
@@ -108,7 +108,7 @@ const CONTENT = {
     petition: {
       label:         'Podepište manifest',
       title:         'Souhlasíte?<br>Podepište.',
-      text:          'Pokud sdílíte přesvědčení, že změna společnosti začíná u&nbsp;každého z&nbsp;nás — podepište tento manifest. Váš podpis není závazkem k&nbsp;politické straně. Je prohlášením osobní odpovědnosti.',
+      text:          'Pokud sdílíte přesvědčení, že změna společnosti začíná u&nbsp;každého z&nbsp;nás — podepište tento manifest. Váš podpis je prohlášením osobní odpovědnosti.',
       btn:           'Podepsat',
       note:          'Po podpisu obdržíte e-mail s&nbsp;potvrzením a&nbsp;plným textem obou manifestů. Data zpracováváme v&nbsp;souladu s&nbsp;GDPR.',
       counter_label: 'podpisů',
@@ -223,7 +223,7 @@ const CONTENT = {
     // ─── STRÁNKA PODPISU ────────────────────────────────────────
     petition_page: {
       title:         'Podepište Manifest<br>Nové vlny',
-      intro:         'Podpisem nevstupujete do politické strany ani nepřebíráte právní závazek. Vyjadřujete souhlas s&nbsp;hodnotami Nové vlny a&nbsp;s&nbsp;myšlenkou, že silný stát začíná zodpovědným člověkem.<br><br>Tento podpis je symbolickým přihlášením se k&nbsp;odpovědnosti, právnímu státu, funkční veřejné správě, bezpečnosti a&nbsp;sebevědomé České republice v&nbsp;Evropě.',
+      intro:         'Podpisem nepřebíráte žádný právní závazek. Vyjadřujete souhlas s&nbsp;hodnotami Nové vlny a&nbsp;s&nbsp;myšlenkou, že silný stát začíná zodpovědným člověkem.<br><br>Tento podpis je symbolickým přihlášením se k&nbsp;odpovědnosti, právnímu státu, funkční veřejné správě, bezpečnosti a&nbsp;sebevědomé České republice v&nbsp;Evropě.',
       excerpt_label: 'Klíčové body manifestu',
       excerpt_items: [
         { bold: 'Odpovědnost jako základ.',            text: 'Silný stát nezačíná institucemi. Začíná u&nbsp;lidí. Pravidla platí pro všechny stejně.' },
@@ -349,7 +349,7 @@ const CONTENT = {
     join: {
       label:        'Join us',
       title:        'Join<br>Nová vlna.',
-      subtitle:     'The future does not happen by itself. It is shaped by the decisions we make today. If you believe the Czech Republic can be a more responsible, functional, secure, and confident country, join the Nová vlna Manifesto.<br><br>This is not about joining a political party — it is about committing to values a stronger society can stand on.',
+      subtitle:     'The future does not happen by itself. It is shaped by the decisions we make today. If you believe the Czech Republic can be a more responsible, functional, secure, and confident country, join the Nová vlna Manifesto.<br><br>It is about committing to values a stronger society can stand on.',
       btn_contact:  'Contact us',
       btn_sign:     'Sign',
       btn_manifest: 'Manifest',
@@ -359,7 +359,7 @@ const CONTENT = {
     petition: {
       label:         'Sign the manifesto',
       title:         'Do you agree?<br>Sign.',
-      text:          'If you share the belief that social change begins with each of us — sign this manifesto. Your signature is not a commitment to a political party. It is a declaration of personal responsibility.',
+      text:          'If you share the belief that social change begins with each of us — sign this manifesto. Your signature is a declaration of personal responsibility.',
       btn:           'Sign',
       note:          'After signing, you will receive a confirmation email with the full text of both manifestos. Data processed in accordance with GDPR.',
       counter_label: 'signatures',
@@ -474,7 +474,7 @@ const CONTENT = {
     // ─── PETITION PAGE ──────────────────────────────────────────
     petition_page: {
       title:         'Sign the Nová vlna<br>Manifesto',
-      intro:         'By signing you are not joining a political party, nor taking on any legal obligation. You express agreement with the values of Nová vlna and with the idea that a strong state begins with a responsible person.<br><br>This signature is a symbolic commitment to responsibility, the rule of law, a functioning public administration, security, and a confident Czech Republic in Europe.',
+      intro:         'By signing you are not taking on any legal obligation. You express agreement with the values of Nová vlna and with the idea that a strong state begins with a responsible person.<br><br>This signature is a symbolic commitment to responsibility, the rule of law, a functioning public administration, security, and a confident Czech Republic in Europe.',
       excerpt_label: 'Key points of the manifesto',
       excerpt_items: [
         { bold: 'Responsibility as foundation.',           text: 'A strong state does not begin with institutions. It begins with people. Rules apply equally to all.' },
