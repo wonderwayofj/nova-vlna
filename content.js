@@ -63,7 +63,7 @@ const CONTENT = {
         { num: '09', title: 'Bezpečnost a&nbsp;obrana', text: 'Bezpečnost je základ stability. Dostatečné investice do obrany, moderní armáda, kybernetická bezpečnost a&nbsp;aktivní role v&nbsp;Evropě a&nbsp;NATO.' },
         { num: '10', title: 'Strategická nezávislost', text: 'Nezávislost znamená připravenost. Vlastní zdroje, záložní řešení, odolnost proti výpadkům. Klíčovou roli hraje energetika — snížení závislosti na dovozu fosilních paliv z&nbsp;nás dělá společnost méně závislou na ostatních mocnostech a&nbsp;méně vydíratelnou. Když přijde krize, stát funguje.' },
         { num: '11', title: 'Ekonomika, která tvoří hodnotu', text: 'Podporujeme podnikání a&nbsp;inovace, flexibilní pracovní prostředí a&nbsp;rozvoj českého know-how. Chceme ekonomiku, která roste a&nbsp;tvoří hodnotu.' },
-        { num: '12', title: 'Silná Evropa, silná ČR', text: 'Chceme být aktivní a&nbsp;vlivný hráč v&nbsp;EU, sjednocovat systémy v&nbsp;rámci Evropy a&nbsp;NATO a&nbsp;posilovat evropskou ekonomiku. Svět je multipolární — my chceme být u&nbsp;toho.' },
+        { num: '12', title: 'Silná Evropa, silná ČR', text: 'Věříme v&nbsp;silnější Evropu. Chceme federalizaci klíčových oblastí — obrany, zahraničí a&nbsp;obchodu. Národní vlády mají smysl tam, kde rozmanitost je hodnotou: kultura, vnitřní politika, lokální správa. Svět je multipolární — malé státy v&nbsp;něm samy ztrácejí vliv.' },
       ],
     },
 
@@ -314,7 +314,7 @@ const CONTENT = {
         { num: '09', title: 'Security and defence', text: 'Security is the foundation of stability. Adequate defence spending, a modern military, cybersecurity, and an active role in Europe and NATO.' },
         { num: '10', title: 'Strategic independence', text: 'Independence means preparedness. Our own resources, backup solutions, resilience against outages. Energy plays a key role — reducing our dependence on imported fossil fuels makes us less dependent on other powers and less open to blackmail. When a crisis comes, the state keeps working.' },
         { num: '11', title: 'An economy that creates value', text: 'We support entrepreneurship and innovation, a flexible working environment, and the development of Czech know-how. We want an economy that grows and creates value.' },
-        { num: '12', title: 'Strong Europe, strong Czech Republic', text: 'We want to be an active and influential player in the EU, harmonise systems within Europe and NATO, and strengthen the European economy. The world is multipolar — we want to be part of it.' },
+        { num: '12', title: 'Strong Europe, strong Czech Republic', text: 'We believe in a stronger Europe. We want federalisation of key areas — defence, foreign affairs, and trade. National governments make sense where diversity is a value: culture, internal policy, local governance. The world is multipolar — small states lose influence on their own.' },
       ],
     },
 
