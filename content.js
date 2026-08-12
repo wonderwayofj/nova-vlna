@@ -85,9 +85,9 @@ const CONTENT = {
       link:   'Číst Manifest osobní odpovědnosti',
       values: [
         'Myšlenky a&nbsp;činy mají sílu měnit realitu',
-        'Odvaha je důležitější než jistota',
-        'Spolupráce je silnější než izolace',
         'AI a technologie v souladu s hodnotami společnosti',
+        'Spolupráce je silnější než izolace',
+        'Odvaha je důležitější než jistota',
         'Svoboda bez zodpovědnosti je prázdná',
         'Tvoříme místo stěžování',
         'Jednáme místo čekání',
@@ -336,9 +336,9 @@ const CONTENT = {
       link:   'Read the Manifesto of Personal Responsibility',
       values: [
         'Thoughts and actions have the power to change reality',
-        'Courage matters more than certainty',
-        'Cooperation is stronger than isolation',
         'AI and technology aligned with values of society',
+        'Cooperation is stronger than isolation',
+        'Courage matters more than certainty',
         'Freedom without responsibility is empty',
         'We create instead of complaining',
         'We act instead of waiting',
