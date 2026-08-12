@@ -448,13 +448,13 @@
       flex-shrink: 0;
     }
     .vt-dot {
-      width: 5px;
-      height: 5px;
-      background: currentColor;
-      border-radius: 50%;
       flex-shrink: 0;
-      transform: translateY(-0.09em);
       margin: 0 4.4rem;
+      font-size: 1em;
+      line-height: 1;
+    }
+    .vt-dot::before {
+      content: '~';
     }
     @keyframes ticker {
       from { transform: translateX(0); }
